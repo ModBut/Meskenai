@@ -1,0 +1,54 @@
+body {
+    background-color: black;
+}
+
+div, p {
+    width: 120px;
+    height: 120px;
+    background-color: black;
+    border: 2px solid black;
+    margin: 10px;
+    border-radius: 60px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 120px;
+    box-sizing: border-box;
+    font-family: monospace;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+div:hover {
+    border-color: white;
+}
+
+.white {
+    color: white;
+
+}
+.black {
+    color: black;
+}
+
+.circle1 {
+    background-color: #75BBA799;
+    border-color: #75BBA7;
+}
+
+.circle2 {
+    background-color: #6C809A99;
+    border-color: #6C809A;
+}
+.circle3 {
+    background-color: #79566399;
+    border-color: #795663;
+}
+
+.circle4 {
+    background-color: #C1DBB399;
+    border-color: #C1DBB3;
+}
+div.circle5 {
+    background-color: #90E0F399;
+    border-color: #90E0F3;
+}

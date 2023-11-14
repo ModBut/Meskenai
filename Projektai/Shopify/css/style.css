@@ -9,15 +9,15 @@
     background-image: url(../img/first.jpg);
     border: 1px solid black;
     background-size: cover;
-    width: 300px;
-    height: 300px;
+    width: 45vw;
+    height: 45vw;
 }
 
 .text {
     border: 1px solid black;
     text-align: center;
-    width: 300px;
-    height: 300px;
+    width: 45vw;
+    height: 45vw;
     font-family: 'Noto Sans Kawi', sans-serif;
     letter-spacing: 1px;
 }
@@ -31,7 +31,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 .top {

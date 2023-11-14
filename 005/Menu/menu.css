@@ -150,6 +150,10 @@ input:checked + .menu {
     font-family: ShopifySans, Helvetica, Arial, Lucida Grande, sans-serif;
 }
 
+.top-menu ul li ul li a {
+    font-size: 12px;
+}
+
 .top-menu ul li a:hover {
     color: greenyellow;
 }

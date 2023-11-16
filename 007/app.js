@@ -77,15 +77,17 @@ console.log('Hello. Racoons, from app.js...');
 // console.log(t6 ,typeof t6);
 
 
+let A = 2;
+let B = 28;
 
-
+C = B % A;
+console.log(C, typeof C);
 
 // let C = A + B;
 // console.log(C, typeof C);
 // C = A - B
 // console.log(C, typeof C);
-// C = B % A;
-// console.log(C, typeof C);
+
 
 // A++;
 //padidinimas vienetu
@@ -93,11 +95,10 @@ console.log('Hello. Racoons, from app.js...');
 //A--;
 //pamazinimas vienetu
 
-let A = 5;
-let B = 3;
-
-let C = A++ + A + ++A;
-console.log(C, typeof C);
 
 
-console.log('A:' , A);
+// let C = A++ + A + ++A;
+// console.log(C, typeof C);
+
+
+// console.log('A:' , A);

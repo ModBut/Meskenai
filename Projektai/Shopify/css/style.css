@@ -3,8 +3,174 @@
     padding: 0;
     box-sizing: border-box;
     list-style: none;
-
 }
+
+.top {
+    background-color: black;
+    font-family: 'Noto Sans Kawi', sans-serif;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    letter-spacing: 1px;
+}
+
+.top-bar {
+    height: 70px;
+    position: relative;
+}
+
+.burger {
+    width: 40px;
+    height: 2px;
+    background-color: black;
+    border-radius: 3px;
+    margin: 25px 0;
+    position: relative;
+    
+}
+
+@media only screen and (min-width: 900px) {
+    .burger {
+        display: none;
+    }
+}
+
+.burger::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    background-color: black;
+    border-radius: 3px;
+    top: -10px;
+}
+
+.burger::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    background-color: black;
+    border-radius: 3px;
+    top: 10px;
+}
+
+label {
+    cursor: pointer;
+    display: inline-block;
+    height: 400px;
+    width: 30px;
+    position: absolute;
+    top: 12px;
+    left: 35px;
+}
+
+input {
+    display: none;
+}
+
+.menu {
+    width: 300px;
+    height: 100vh;
+    background-color: white;
+    border-right: 2px solid black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-300px);
+    transition: transform 0.5s cubic-bezier(.61, -0.61, .33, 1.6);
+    display: none;
+    
+}
+
+ @media only screen and (min-width: 700px) {
+    .menu {
+        display: block;
+    }
+}
+
+input[type=checkbox]:checked+.menu {
+    transform: translateX(0);
+}
+
+.menu label {
+    position: relative;
+    right: 100px;
+    top: -5px;
+    cursor: pointer;
+    font-size: 20px;
+    text-align: right;
+}
+
+.menu label::after {
+    content: '\2716';
+}
+
+.menu ul  {
+    padding-left: 25px;
+    margin-bottom: 25px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+.menu ul li ul li {
+    border-bottom: none;
+}
+
+.menu ul li ul li a {
+    font-size: 8px;
+}  */
+
+
+
+@media only screen and (max-width: 900px) {
+    .logo {
+        display: none;
+    }
+}
+
+.top-menu {
+    padding: 25px 69.5px;
+}
+
+.logo {
+    padding: 14.6px;
+}
+
+.top-menu a {
+    padding: 14.6px;
+    text-decoration: none;
+    color: black;
+}
+
+.top-menu a span {
+    padding: 12.6px;
+}
+
+.top-menu a span:hover {
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 900px) {
+    .top-menu {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 .esss {
     background-image: url(../img/first.jpg);
     border: 1px solid black;
@@ -33,15 +199,6 @@
     justify-content: center;
 }
 
-.top {
-    background-color: black;
-    font-family: 'Noto Sans Kawi', sans-serif;
-    color: white;
-    text-align: center;
-    padding: 5px 21px;
-}
-
-
 h2 {
     font-family: 'avenir next', sans-serif;
     letter-spacing: 1px;
@@ -60,8 +217,11 @@ ol {
 }
 
 li {
-    height: 70vh;
     flex-grow: 1;
+}
+
+.price {
+    height: 0;
 }
 
 img {
@@ -89,16 +249,35 @@ ul img {
     width: 100px;
 }
 
-header {
-    width: 0;
-    height: 100px;
+
+
+
+
+.colection {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 100px 50px;
+    justify-content: center;
+
 }
 
-.menu {
-    position: absolute;
-    padding: 0;
+a img {
+    width: 25vw;
+    height: 25vw;
 }
 
-.menu li {
-    padding: 20px;
+.container3 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.ssss {
+    background-image: url(../img/pic-text.jpg.webp);
+    border: 1px solid black;
+    background-size: cover;
+    width: 45vw;
+    height: 45vw;
 }

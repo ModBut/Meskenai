@@ -6,9 +6,16 @@
   overflow-x: hidden;
 }
 
+@font-face {
+  font-family: sen1;
+  font-family: sen;
+  src: url(../font/tryst-font.zip);
+  src: url(../font/Sen-wZy2.otf);
+}
+
 .top {
   background-color: black;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: sen;
   color: white;
   text-align: center;
   padding: 10px;
@@ -17,45 +24,113 @@
 
 .top-bar {
   width: 100%;
-  height: 9vw;
+  height: 80px;
   position: relative;
+}
+
+.logo-first {
+  align-items: center;
+  top: 12px;
+}
+
+@media only screen and (min-width: 900px) {
+  .logo-first {
+    display: none;
+  }
+}
+
+.logo {
+  padding-left: 35px;
+  padding-top: 20px;
+}
+
+@media only screen and (max-width: 900px) {
+  .logo {
+    justify-content: center;
+  }
+}
+
+.first a {
+  padding-top: 25px;
+  font-family: sen;
+  font-size: 4px;
 }
 
 .top-menu ul {
   list-style: none;
   position: relative;
-  padding: 21px 52.5px;
-  margin: 19px 26.6px;
+  /* padding-top: 10px; */
+  padding-right: 67px;
 }
 
 .top-menu ul li {
   display: inline-block;
-  padding: 5px;
 }
 
 .top-menu ul li a {
   text-decoration: none;
   font-size: 20px;
-  transition: all 0.3s;
+  padding-left: 2vw;
 }
 
-.top-menu ul li ul li a {
-  font-size: 12px;
+.first:hover {
+  text-decoration: underline;
+}
+
+.fa-search {
+  float: right;
+  cursor: pointer;
+  padding: 30px 5px;
+}
+
+.fa-shopping-cart {
+  float: right;
+  cursor: pointer;
+  padding: 30px 5px;
+}
+@media screen and (max-width: 600px) {
+  li {
+    float: none;
+    width: 100%;
+  }
+
+  .search-icon,
+  .cart-icon {
+    float: none;
+    text-align: center;
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 900px) {
   .top-menu {
     display: none;
+    max-width: 100%;
   }
 }
 
 .burger {
-  width: 70px;
-  height: 6px;
-  background-color: greenyellow;
-  border-radius: 3px;
-  margin: 20px 0;
-  position: relative;
+  box-sizing: content-box;
+}
+
+.line {
+  fill: none;
+  stroke: black;
+  stroke-width: 6;
+  gap: none;
+}
+
+.line1 {
+  stroke-dasharray: 60 207;
+  stroke-width: 6;
+}
+.line2 {
+  stroke-dasharray: 60 60;
+  stroke-width: 6;
+}
+.line3 {
+  stroke-dasharray: 60 207;
+  stroke-width: 6;
 }
 
 @media only screen and (min-width: 900px) {
@@ -64,34 +139,14 @@
   }
 }
 
-.burger::before {
-  content: "";
-  position: absolute;
-  width: 70px;
-  height: 6px;
-  background-color: greenyellow;
-  border-radius: 3px;
-  top: -15px;
-}
-
-.burger::after {
-  content: "";
-  position: absolute;
-  width: 70px;
-  height: 6px;
-  background-color: greenyellow;
-  border-radius: 3px;
-  top: 15px;
-}
-
 label {
   cursor: pointer;
   display: left;
-  height: 46px;
+  height: 60px;
   width: 70px;
   position: absolute;
   top: 12px;
-  right: 20px;
+  right: 30px;
 }
 
 input {
@@ -152,7 +207,7 @@ input[type="checkbox"]:checked + .menu {
 .menu ul li ul li a {
   font-size: 8px;
 }
-*/ @media only screen and (max-width: 900px) {
+@media only screen and (max-width: 900px) {
   .logo {
     display: none;
   }
@@ -166,14 +221,54 @@ input[type="checkbox"]:checked + .menu {
   height: 45vw;
 }
 
+.sip {
+  font-family: sen;
+  letter-spacing: 1px;
+  font-size: 4rem;
+  padding-top: 13vw;
+}
+
+.sip1 {
+  letter-spacing: 1px;
+  font-family: sen;
+  padding-bottom: 1vw;
+  font-size: 1rem;
+}
+
+@media only screen and (max-width: 700px) {
+  .sip {
+    font-size: 3rem;
+  }
+  .sip1 {
+    font-size: 0.9rem;
+  }
+}
+
+.bn590 {
+  background-color: #141414;
+  border: 1px solid rgba(54, 54, 54, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 50px;
+  width: 180px;
+  color: white;
+  text-decoration: none;
+  font-family: sen1;
+  letter-spacing: 2px;
+}
+
+button {
+  border: none;
+}
+
 .text {
   border: 1px solid black;
   text-align: center;
   justify-content: center;
   width: 45vw;
   height: 45vw;
-  font-family: "Noto Sans Kawi", sans-serif;
-  letter-spacing: 1px;
 }
 
 .text-image {
@@ -183,12 +278,19 @@ input[type="checkbox"]:checked + .menu {
 
 .container1 {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
 
+@media only screen and (min-width: 700px) {
+  .container1 {
+    max-width: 100%;
+  }
+}
+
 .tittle {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: sen;
   letter-spacing: 1px;
   padding-left: 65px;
   padding-top: 20px;
@@ -196,11 +298,26 @@ input[type="checkbox"]:checked + .menu {
   flex-grow: 1;
 }
 
+.tag {
+  font-family: sen;
+  font-size: 1rem;
+}
+
+.tag:hover {
+  text-decoration: underline;
+}
+
 .container2 {
   display: flex;
   flex-wrap: wrap;
-  padding: 80px 0 80px 0;
   justify-content: center;
+  padding-bottom: 20px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.container2 a {
+  text-decoration: none;
 }
 
 .container2 img {
@@ -209,6 +326,11 @@ input[type="checkbox"]:checked + .menu {
   object-fit: contain;
   cursor: pointer;
   padding: 0 15px;
+  transition: 1s;
+}
+
+.container2 img:hover {
+  transform: scale(1.1);
 }
 
 .container2 h3 {
@@ -246,6 +368,16 @@ input[type="checkbox"]:checked + .menu {
   flex-wrap: wrap;
   padding: 100px 0 100px 0;
   justify-content: center;
+  overflow: hidden;
+}
+
+.colect {
+  font-family: sen;
+  font-size: 1.5rem;
+}
+
+.colection a {
+  text-decoration: none;
 }
 
 .colection img {
@@ -253,10 +385,11 @@ input[type="checkbox"]:checked + .menu {
   height: 33vw;
   padding: 0 10px;
   cursor: pointer;
-  transition: all 0 3s;
+  transition: 1s;
 }
 
 .colection img:hover {
+  transform: scale(1.02);
 }
 
 a h2 {
@@ -266,27 +399,15 @@ a h2 {
 }
 
 .text1 {
+  width: 55vw;
+  margin: 0 auto;
+  padding: 20px;
   border: 1px solid black;
-  text-align: center;
-  justify-content: center;
-  width: 45vw;
-  height: 45vw;
-  font-family: "Noto Sans Kawi", sans-serif;
-  letter-spacing: 1px;
-}
-
-.ssss {
-  background-image: url(../img/pic-text.jpg.webp);
-  border: 1px solid black;
-  background-size: cover;
-  width: 45vw;
-  height: 45vw;
 }
 
 .text-image1 {
   display: flex;
   flex-wrap: wrap;
-  max-width: 100%;
 }
 
 .container3 {
@@ -294,6 +415,33 @@ a h2 {
   flex-wrap: wrap;
   justify-content: center;
   padding-bottom: 70px;
+}
+
+.yel {
+  max-width: 45vw;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+.yel img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.spicy {
+  font-family: sen;
+  letter-spacing: 1px;
+  font-size: 3rem;
+  padding-top: 20px;
+  padding-left: 30px;
+}
+
+.jane {
+  font-family: sen;
+  letter-spacing: 1px;
+  padding-left: 20px;
+  font-size: 1rem;
 }
 
 .order-img {
@@ -309,17 +457,37 @@ a h2 {
   padding-bottom: 20px;
   width: 45vw;
   height: 45vw;
-  font-family: "Noto Sans Kawi", sans-serif;
+  font-family: sen;
   letter-spacing: 1px;
+}
+
+.ginger {
+  font-family: sen;
+  font-size: 3.5rem;
+}
+
+.cost,
+.view {
+  font-family: sen;
+  font-size: 1rem;
+}
+
+.view {
+  cursor: pointer;
+}
+
+.view:hover {
+  text-decoration: underline;
 }
 
 .buttons {
   display: flex;
   flex-wrap: wrap;
+  padding-bottom: 20px;
 }
 
 .bn59 {
-  font-family: lato, sans-serif;
+  font-family: sen;
   background-color: #141414;
   border: 1px solid rgba(54, 54, 54, 0.6);
   font-weight: 600;
@@ -339,7 +507,7 @@ a h2 {
 }
 
 .bn60 {
-  font-family: lato, sans-serif;
+  font-family: sen;
   background-color: #141414;
   border: 1px solid rgba(54, 54, 54, 0.6);
   font-weight: 600;
@@ -359,7 +527,7 @@ a h2 {
 }
 
 .bn61 {
-  font-family: lato, sans-serif;
+  font-family: sen;
   background-color: #141414;
   border: 1px solid rgba(54, 54, 54, 0.6);
   font-weight: 600;
@@ -378,7 +546,7 @@ a h2 {
 }
 
 .bn14 {
-  font-family: lato, sans-serif;
+  font-family: sen;
   font-weight: bold;
   font-size: 1em;
   letter-spacing: 0.1em;
@@ -401,7 +569,7 @@ a h2 {
 }
 
 .bn15 {
-  font-family: lato, sans-serif;
+  font-family: sen;
   font-weight: bold;
   background-color: black;
   font-size: 1em;
@@ -438,14 +606,26 @@ a h2 {
 
 .gallery-text {
   border: 1px solid black;
-  text-align: center;
   justify-content: center;
-  width: 29vw;
-  height: 30vw;
-  font-family: "Noto Sans Kawi", sans-serif;
-  letter-spacing: 1px;
+  max-width: 29vw;
+  max-height: 30vw;
   margin: 0 15px 0 15px;
 }
+
+.three {
+  font-family: sen;
+  padding: 15px 15px 0 15px;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  width: 100%;
+  transform: translateY(0);
+}
+
+/* @media only screen and (max-width: 935px) {
+  .container6 {
+    flex-wrap: wrap;
+  }
+} */
 
 .two-bottle {
   background-image: url(../img/bag.jpg.webp);
@@ -462,37 +642,138 @@ a h2 {
 
 .container6 {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   padding-bottom: 70px;
 }
 
+.keep {
+  font-family: sen;
+  letter-spacing: 1px;
+  padding-left: 65px;
+  padding-bottom: 20px;
+}
+
+.save {
+  font-family: sen;
+  letter-spacing: 1px;
+  padding-left: 65px;
+}
+
 .test {
   display: flex;
   flex-wrap: wrap;
-  padding: 100px 0 100px 0;
+  padding: 50px 0 50px 0;
   justify-content: center;
+  height: auto;
+  width: 100%;
+  overflow: hidden;
 }
 
 .test img {
   width: 22.5vw;
   height: 30vw;
-  padding: 0 10px;
+  padding: 0 15px;
   cursor: pointer;
-  transition: all 0 3s;
   object-fit: cover;
+  transition: 0.5s;
+}
+
+.test img:hover {
+  transform: scale(1.02);
+}
+
+.last {
+  font-family: sen;
+  font-size: 1rem;
+}
+
+.last:hover {
+  text-decoration: underline;
+}
+
+.test a {
+  text-decoration: none;
+  text-align: center;
 }
 
 footer {
-  height: 30vw;
-  background-color: black;
+  height: 35vw;
+  background-color: rgb(8, 8, 18);
+}
+
+.footer {
+  padding: 0;
+  color: white;
+  border-bottom: 1px solid rgb(44, 43, 43);
+  height: 28vw;
 }
 
 .footer0 {
-  color: white;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-p {
-  font-family: Arial, Helvetica, sans-serif;
+.links {
+  padding-right: 25vw;
+  padding-top: 2vw;
+  padding-left: 7vw;
+}
+
+.quick-links {
+  font-family: sen;
+  font-size: 2rem;
+}
+
+.footer-list li {
+  font-family: sen;
+  color: rgb(183, 178, 178);
+  padding-bottom: 15px;
   font-size: 1rem;
+  cursor: pointer;
+}
+
+.mision {
+  padding-right: 30vw;
+  padding-top: 2vw;
+}
+
+.mision-h {
+  font-family: sen;
+  font-size: 2rem;
+}
+
+.mision-text {
+  font-family: sen;
+  padding-bottom: 5vw;
+  font-size: 1.25rem;
+  color: rgb(183, 178, 178);
+}
+
+.footer-logo {
+  padding-top: 3.5vw;
+}
+
+.emails {
+  padding-left: 7vw;
+}
+
+.emails-text {
+  font-family: sen;
+  font-size: 2rem;
+}
+
+.container7 {
+  max-width: 30vw;
+  height: 3vw;
+  border: 1px solid ghostwhite;
+}
+
+.copy p {
+  font-family: sen;
+  color: rgb(183, 178, 178);
+  text-align: center;
+  font-size: 0.8rem;
+  padding-top: 50px;
 }

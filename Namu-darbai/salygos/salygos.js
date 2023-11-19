@@ -2,8 +2,6 @@
 
 console.log("Pirma uzduotis");
 
-
-
 function rand(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -15,7 +13,6 @@ let digit2 = rand(0, 4);
 
 if (digit1 > digit2); {
   console.log(digit1 / digit2);
-
 } else if (digit2 > digit1);
   console.log(digit2 / digit1);
 

@@ -13,6 +13,10 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kawi&family=Playfair+Display&family=Red+Hat+Display:wght@300;400;700;900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Taste</title>
   </head>
 
@@ -21,19 +25,45 @@
       <p>Free shipping on all orders over $70</p>
     </div>
     <div class="top-bar">
+      <div class="logo-first">
+        <a href="#"><img src="../Shopify/img/111.webp" /></a>
+      </div>
       <div class="top-menu">
         <ul>
-          <li><a href="#">Logo</a></li>
-          <li><a href="#">Drinks</a></li>
-          <li><a href="#">Bundles</a></li>
-          <li><a href="#">Recipes</a></li>
-          <li><a href="#">About</a></li>
+          <li class="logo">
+            <a href="#"><img src="../Shopify/img/111.webp" /></a>
+          </li>
+          <li class="first"><a href="#">Drinks</a></li>
+          <li class="first"><a href="#">Bundles</a></li>
+          <li class="first"><a href="#">Recipes</a></li>
+          <li class="first"><a href="#">About</a></li>
+          <li class="fa fa-search"><a href="#"></a></li>
+          <li class="fa fa-shopping-cart"><a href="#"></a></li>
         </ul>
       </div>
       <label for="toggle">
-        <div class="burger"></div>
+        <div class="burger">
+          <svg width="100" height="50" viewBox="0 0 100 100">
+            <path
+              class="line line1"
+              d="M 20,29.000046 H 80.000231 
+              C 80.000231,29.000046 94.498839,
+              28.817352 94.532987,66.711331 94.543142,
+              77.980673 90.966081,81.670246 85.259173,
+              81.668997 79.552261,81.667751 75.000211,
+              74.999942 75.000211,74.999942 L 25.000021,25.000058"
+            />
+            <path class="line line2" d="M 20,50 H 80" />
+            <path
+              class="line line3"
+              d="M 20,70.999954 H 80.000231 C
+               80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942"
+            />
+          </svg>
+        </div>
       </label>
     </div>
+
     <input type="checkbox" id="toggle" />
     <div class="menu">
       <label for="toggle"></label>
@@ -55,18 +85,18 @@
       <div class="text-image">
         <div class="esss"></div>
         <div class="text">
-          <h1>Take a sip</h1>
-          <p>
+          <h1 class="sip">Take a sip</h1>
+          <p class="sip1">
             Sweet, tart, and oh-so-refreshing, our low-sugar,<br />
             probiotic lemonades taste like summer in a bottle.<br />
-            <button>Shop lemonades</button>
           </p>
+          <button><a class="bn590" href="/">Shop Lemonades</a></button>
         </div>
       </div>
     </div>
 
     <div class="tittle">
-      <h2><b>Meet our bestsellers</b></h2>
+      <h2>Meet our bestsellers</h2>
     </div>
     <div class="container2">
       <a href="#"
@@ -79,7 +109,7 @@
       >
       <a href="#"
         ><img src="../Shopify/img/red.jpg.webp" />
-        <h3 class="tag">The Giver<br />From $8.95 CAD></h3></a
+        <h3 class="tag">The Giver<br />From $8.95 CAD</h3></a
       >
       <a href="#"
         ><img src="../Shopify/img/yellow.jpg.webp" />
@@ -99,67 +129,65 @@
     <div class="colection">
       <a href="#"
         ><img src="../Shopify/img/booster.jpg.webp" />
-        <h2>Booster</h2></a
+        <h2 class="colect">Booster &rarr;</h2></a
       >
       <a href="#"
         ><img src="../Shopify/img/kombucha.jpg.webp" />
-        <h2>Kombuchas</h2></a
+        <h2 class="colect">Kombuchas &rarr;</h2></a
       >
       <a href="#"
         ><img src="../Shopify/img/juice,jpg.webp" />
-        <h2>Cold-pressed Juice</h2></a
+        <h2 class="colect">Cold-pressed Juice &rarr;</h2></a
       >
     </div>
 
     <div class="container3">
       <div class="text-image1">
         <div class="text1">
-          <h2>
-            "This spicy, pocket-<br />
-            sized booster is the<br />
-            healthy kickstart i<br />
-            need to start my day."
+          <h2 class="spicy">
+            <b>"This spicy, pocket - sized booster<br /> is the
+            healthy kickstart i need to<br /> 
+            start my day."</b>
+            <h3 class="jane">- JANE S.</h3>
           </h2>
         </div>
-        <div class="ssss"></div>
+        <div class="yel">
+          <img src="../Shopify/img/pic-text.jpg.webp" />
+        </div>
       </div>
     </div>
     <div class="container5">
       <div class="order">
         <div class="order-img"></div>
         <div class="order-text">
-          <h2>Fiery Ginger Booster</h2>
-          <h3>
-            $3.95 CAD<br />
-            Size
-          </h3>
+          <h2 class="ginger">Fiery Ginger Booster</h2>
+          <h4>$3.95 CAD</h4>
+          <h3 class="cost">Size</h3>
           <div class="buttons">
             <a class="bn59" href="/">60 ml</a><br />
             <a class="bn60" href="/">Six Pack</a><br />
             <a class="bn61" href="/">Twelve Pack</a><br />
           </div>
-          <div class="quantity">
-            <h3>Quantity</h3>
-          </div>
 
           <div class="bn14">Add to Cart</div>
           <br />
           <div class="bn15">Buy it now</div>
-          <h3>View full details</h3>
+          <h3 class="view">View full details &rarr;</h3>
         </div>
       </div>
     </div>
 
     <div>
-      <h2>Keeping it green</h2>
+      <h2 class="keep">Keeping it green</h2>
       <div class="container6">
         <div class="gallery">
           <div class="empty"></div>
           <div class="gallery-text">
-            <p>
+            <p class="three">
               We strive for sustainability in every facet of our business. From
               our plant-based recipes to our glass bottles, it's central to who
-              we are.
+              we are.<br />
+              <hr3 class='view'>Learn more &rarr;</h3>
             </p>
           </div>
           <div class="two-bottle"></div>
@@ -167,41 +195,58 @@
       </div>
     </div>
 
-    <h2>Bundle up and save</h2>
+    <h2 class="save">Bundle up and save</h2>
     <div class="test">
       <a href="#"
         ><img src="../Shopify/img/green-bundle.jpg.webp" />
-        <h3>Green Bundle<br />$64.95 CAD</h3></a
+        <h3 class="last">Green Bundle<br />$64.95 CAD</h3></a
       >
       <a href="#"
         ><img src="../Shopify/img/standart-bundle.jpg.webp" />
-        <h3>Standart Bundle<br />$64.95 CAD</h3></a
+        <h3 class="last">Standart Bundle<br />$64.95 CAD</h3></a
       >
       <a href="#"
         ><img src="../Shopify/img/week-green.jpg.webp" />
-        <h3>Days of The Weeks Greens<br />$29.95 CAD</h3></a
+        <h3 class="last">Days of The Weeks Greens<br />$29.95 CAD</h3></a
       >
       <a href="#"
         ><img src="../Shopify/img/immunity-kit.jpg.webp" />
-        <h3>Imumnity Kit<br />$39.95 CAD</h3></a
+        <h3 class="last">Imumnity Kit<br />$39.95 CAD</h3></a
       >
     </div>
 
     <footer>
-      <div class="footer0">
-        <h2>Quick links</h2>
-        <ul>
-          <li>Drinks</li>
-        </ul>
-        <ul>
-          <li>Bundles</li>
-        </ul>
-        <ul>
-          <li>Recipes</li>
-        </ul>
-        <ul>
-          <li>About</li>
-        </ul>
+      <div class="footer">
+        <div class="footer0">
+          <div class="links">
+            <h2 class="quick-links">Quick links</h2>
+            <ul class="footer-list">
+              <li>Drinks</li>
+              <li>Bundles</li>
+              <li>Recipes</li>
+              <li>About</li>
+            </ul>
+          </div>
+          <div class="mision">
+            <h2 class="mision-h">Our Mision</h2>
+            <p class="mision-text">
+              We offer sustainable access<br />
+              to delicious plant-based<br />
+              nutrition.
+            </p>
+          </div>
+          <div class="footer-logo">
+            <a href="#"><img src="../Shopify/img/522.webp" /></a>
+          </div>
+        </div>
+        <div class="emails">
+          <h2 class="emails-text">We send delicious emails.</h2>
+          <div class="container7">
+          </div>
+        </div>
+      </div>
+      <div class="copy">
+        <p>&copy; 2023, theme-taset-demo Powered by Shopify</p>
       </div>
     </footer>
   </body>

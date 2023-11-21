@@ -1,0 +1,67 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: font1;
+  src: url(../fonts/Sen-wZy2.otf);
+}
+
+.top {
+  background-color: black;
+
+  color: white;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.top-text {
+  margin: 0;
+  padding: 10.5px 21px;
+  font-family: font1;
+  font-size: 16.25px;
+}
+
+.top-bar {
+  position: relative;
+  padding: 21px 52.5px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.main-logo {
+  margin: 0;
+  padding-top: 7.875px;
+}
+.main-logo a {
+  margin: 0 0 0 -7.875px;
+  padding: 7.875px;
+}
+
+.top-bar ul {
+  list-style: none;
+  position: relative;
+  padding-left: 10px;
+  margin: 0;
+}
+
+.top-bar ul li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  padding: 12.6px;
+  text-decoration: none;
+}
+
+summary {
+  padding: 12.6px 28.35px 12.6px 12.6px;
+}
+
+span {
+  font-family: "Anonymous Pro", monospace;
+  font-size: 14.7px;
+}

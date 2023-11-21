@@ -135,9 +135,16 @@ function rand(min, max) {
 }
 
 let zvakeskaina = 1;
+let zvakiukiekis = zvakiukaina;
 
-let 
 
+if (zvakiukiekis > 1000); {
+  console.log('Taikoma 3proc. nuolada. Zvakes kaina: 0.97eur/vnt.' );
+}
+
+if (zvakiukiekis > 200) {
+  console.log('Taikoma 4proc. nuolaida. Zvakes kaina: 0.96eur/vnt.')
+}
 
 
 

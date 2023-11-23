@@ -1,36 +1,92 @@
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-}
-
-body {
+/* body {
   margin: 0;
-}
-
-:root {
-  --bar-width: 60px;
-  --bar-height: 8px;
-  --hamburger-gap: 6px;
-}
-
-.hamburger-menu {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  gap: var(--hamburger-gap);
+  align-items: center;
+  /* min-height: 100vh; */
+/* font-family: monospace;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff; */
+/* }
+
+[type="radio"] {
+  display: none;
 }
 
-.hamburger-menu::before,
-.hamburger-menu::after,
-.hambutger-menu input {
-  content: "";
-  width: var(--var-widht);
-  height: var(--bar-heigt);
-  background-color: white;
-  border-radius: 9999px;
+.block {
+  right: 0;
+  top: 50px;
+  width: 500px;
+  position: relative;
 }
-.humberger-menu input {
-  appearance: none;
-  padding: 0;
+
+.block label {
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.a {
+  width: 500px;
+  height: 100px;
+  background-color: rgb(109, 52, 52);
+  position: absolute;
+  display: block;
+  border-right: 2px solid black;
+  top: 0;
+  transform: translateZ(-300px);
+  transition: transform 0.5s cubic-bezier(0.61, -0.61, 0.33, 1.6); */
+
+/* }
+
+input[type="checkbox"]:checked + .a {
+  transform: translateX(0);
+}
+
+
+
+[type="radio"] + label + label {
+  display: none;
+}
+
+[type="radio"]:checked + label + label {
+  display: block;
+}
+
+[type="radio"]:checked + label {
+  display: none;
+}
+
+[type="radio"]:checked + label + label + .a {
+  max-height: 100px;
+}  */
+
+.body {
   margin: 0;
+  padding: 0;
+}
+
+input {
+  display: none;
+}
+
+.menu1 {
+  cursor: pointer;
+  border: 1px solid black;
+  height: 60px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  transform: translateX(-300px);
+  transition: transform 0.5s cubic-bezier(0.61, -0.61, 0.33, 1.6);
+  display: none;
+}
+
+.menu {
+  top: 0;
 }

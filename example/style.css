@@ -1,92 +1,54 @@
-/* body {
-  margin: 0;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* min-height: 100vh; */
-/* font-family: monospace;
-  font-size: 20px;
-  line-height: 1.5;
-  color: #333;
-  background-color: #fff; */
-/* }
-
-[type="radio"] {
-  display: none;
-}
-
-.block {
-  right: 0;
-  top: 50px;
-  width: 500px;
-  position: relative;
-}
-
-.block label {
-  position: absolute;
-  display: block;
-  top: 0;
-  right: 0;
+label {
   cursor: pointer;
-  user-select: none;
-}
-
-.a {
-  width: 500px;
-  height: 100px;
-  background-color: rgb(109, 52, 52);
+  display: inline-block;
+  height: 46px;
+  width: 70px;
   position: absolute;
-  display: block;
-  border-right: 2px solid black;
-  top: 0;
-  transform: translateZ(-300px);
-  transition: transform 0.5s cubic-bezier(0.61, -0.61, 0.33, 1.6); */
-
-/* }
-
-input[type="checkbox"]:checked + .a {
-  transform: translateX(0);
-}
-
-
-
-[type="radio"] + label + label {
-  display: none;
-}
-
-[type="radio"]:checked + label + label {
-  display: block;
-}
-
-[type="radio"]:checked + label {
-  display: none;
-}
-
-[type="radio"]:checked + label + label + .a {
-  max-height: 100px;
-}  */
-
-.body {
-  margin: 0;
-  padding: 0;
+  top: 50px;
+  right: 30px;
 }
 
 input {
   display: none;
 }
 
-.menu1 {
-  cursor: pointer;
-  border: 1px solid black;
-  height: 60px;
-  width: 100%;
+.serch-bar {
+  width: 1536px;
+  height: 15vh;
+  background-color: #006400;
   position: absolute;
   top: 0;
-  transform: translateX(-300px);
-  transition: transform 0.5s cubic-bezier(0.61, -0.61, 0.33, 1.6);
+  left: 0;
+  transform: translateY(-1536px);
+  transition: transform 0.5s;
   display: none;
 }
 
-.menu {
-  top: 0;
+.serch-bar {
+  display: block;
+}
+
+input[type="checkbox"]:checked + .serch-bar {
+  transform: translateY(0);
+}
+
+.serch-bar h2 {
+  color: white;
+  padding: 20px;
+  position: relative;
+  background-color: white;
+}
+
+.serch-bar h2 label {
+  position: absolute;
+  right: 20px;
+  top: -10px;
+  cursor: pointer;
+  font-size: 30px;
+  text-align: right;
+}
+
+.serch-bar h2 label::after {
+  content: "\2715";
+  color: black;
 }

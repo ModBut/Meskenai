@@ -42,16 +42,27 @@ if (kurolikutis <= 0) {
 //4.
 
 let ratai = 10;
+let maziausiasgreitis = 21;
+
+for (ratai = 1; ratai <= 10; ratai++) {
+  console.log(ratai);
+}
+
+for (posukiai = 1; posukiai <= 5; posukiai++) {
+  let posukiai = rand(20, 120);
+  console.log("Posukio greitis:", posukiai);
+}
+
+if (posukiai < maziausiasgreitis) {
+  posukiai = maziausiasgreitis;
+}
+
+console.log("Maziausias greitis:", maziausiasgreitis);
 
 // Vyksta automobilių žiedinės lenktynės.
-// Automobiliui Nr. 55 liko nuvažiuoti 10 ratų (žiedų). Kiekviename žiede yra 5 posūkiai,
+// Automobiliui Nr. 55 liko nuvažiuoti 10 ratų (žiedų).
+// Kiekviename žiede yra 5 posūkiai,
 // kuriuose automobilio greitis yra atsitiktinis dydis nuo 20 iki 120 km/h.
 // Imituokite tokią situaciją dviem for ciklais
 // (vienas 10 ratų, kitas 5 posūkiai) ir ciklams pasibaigus atspausdinkite
 // mažiausią automobilio greitį kažkuriame iš posūkių.
-
-for (let ratas = 1; ratas <= 10; ratas++)
-  for (let posukis = 1; posukis <= 5; posukis++) {
-    let posukis = rand(20, 120);
-    console.log("Posukio greitis: ", posukis);
-  }

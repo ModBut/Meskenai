@@ -69,12 +69,6 @@ function rand(min, max) {
 
 console.log("Ketvirtas uzdavinys");
 
-function rand(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * 2);
-}
-
 let d = rand(0, 2);
 let e = rand(0, 2);
 let f = rand(0, 2);

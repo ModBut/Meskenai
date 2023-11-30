@@ -589,7 +589,7 @@ a h2 {
 /* --------- */
 
 .text1 {
-  width: 100vw;
+  width: 90vw;
   height: 25vw;
   border: 2px solid black;
   position: relative;
@@ -774,7 +774,6 @@ a h2 {
 .buttons {
   display: flex;
   flex-wrap: wrap;
-
   padding-bottom: 20px;
 }
 
@@ -890,6 +889,12 @@ a h2 {
   .order {
     flex-wrap: wrap;
   }
+  .order-text {
+    /* height: 140vw; */
+  }
+  .buttons {
+    flex-wrap: none;
+  }
 }
 
 /* ---------- */
@@ -907,16 +912,18 @@ a h2 {
   justify-content: center;
   width: 29vw;
   height: 30vw;
-  /* margin: 0 15px 0 15px; */
 }
 
 .three {
   font-family: font1;
   font-weight: lighter;
-  font-size: 1.5rem;
-  line-height: 2.5vw;
+  font-size: 1.25rem;
+  line-height: 2.25vw;
   letter-spacing: 1px;
-  padding: 10px 15px;
+  margin: 0;
+  padding-top: 7%;
+  padding-left: 4%;
+  padding-right: 4%;
 }
 
 .two-bottle {
@@ -953,6 +960,11 @@ a h2 {
   .empty {
     width: 100%;
     height: 70vw;
+  }
+  .three {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    line-height: 4vw;
   }
   .gallery-text {
     width: 100%;

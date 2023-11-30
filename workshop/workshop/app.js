@@ -6,7 +6,6 @@ console.log("Hello!");
 //     return answer;
 //   } else if (n > 1) {
 //     for (let i = n; i >= 1; i--) {
-
 //     }
 //   }
 // }
@@ -21,24 +20,3 @@ function funkcijaVienas(stringas) {
 }
 
 funkcijaVienas("Sedek uz kedes");
-
-console.log("----------------------------------------------");
-
-const names = ["John", "Bob", "Marry", "James"];
-
-// for (let i = 0; i < names.length; i++) {
-//   console.log(names[i]);
-// }
-
-for (name of names) {
-  console.log(name);
-}
-
-const user = {
-  firstName: "John",
-  lastName: "Doe",
-};
-
-for (key in user) {
-  console.log(user[key]);
-}

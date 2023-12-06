@@ -12,10 +12,14 @@ function rand(min, max) {
 
 const array = [];
 
-for (i = 0; i < 30; i++) {
+for (let i = 0; i < 30; i++) {
   let atsitiktiniaiskaiciai = rand(5, 25);
   array.push(atsitiktiniaiskaiciai);
 }
+
+// for (let i = 0; i < 30; i++) {
+//   array.push(rand(5, 25))
+// }
 
 console.log(array);
 
@@ -63,7 +67,11 @@ console.log("Poriniu indeksu reiksmiu suma: ", reiksmiuSuma);
 
 console.log("D");
 
-let newArray = array;
+let newArray = [];
+
+for (let i = 0; i < array.length; i++) {
+  newArray.push(array[i] - i);
+}
 
 console.log(newArray);
 

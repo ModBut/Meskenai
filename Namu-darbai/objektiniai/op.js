@@ -89,6 +89,52 @@ console.log("Ketvirtas uzdavinys");
 
 console.log("Penktas uzdavinys");
 
+class PirkiniuKrepselis {
+  constructor() {
+    this.turinys = new Map();
+  }
+
+  idetiSureli(kiekis) {
+    if (this.turinys.has("sureliai")) {
+      this.turinys.set("sureliai", this.turinys.get("sureliai") + kiekis);
+    } else {
+      this.turinys.set("sureliai", kiekis);
+    }
+  }
+
+  idetiPieno(kiekis) {
+    if (this.turinys.has("pienas")) {
+      this.turinys.set("pienas", this.turinys.get("pienas") + kiekis);
+    } else {
+      this.turinys.set("pienas", kiekis);
+    }
+  }
+
+  idetiDuonos(kiekis) {
+    if (this.turinys.has("duonos")) {
+      this.turinys.set("duonos", this.turinys.get("duonos") + kiekis);
+    } else {
+      this.turinys.set("duonos", kiekis);
+    }
+  }
+
+  krepselioTurinys() {
+    console.log("Krepselio turinys");
+    for (const produktas of this.turinys) {
+      console.log(`${produktas[0]}: ${produktas[1]}`);
+    }
+  }
+}
+
+const krepselis = new PirkiniuKrepselis();
+
+krepselis.idetiSureli(2);
+krepselis.idetiPieno(1);
+krepselis.idetiDuonos();
+krepselis.idetiPieno(2);
+
+console.log(krepselioTurinys);
+
 console.log("Astuntas uzdavinys");
 
 class Stikline {
@@ -121,3 +167,44 @@ const simtas = new Stikline(100);
 
 pilam.ipilti(500);
 console.log(pilam);
+
+console.log("Devintas uzdavinys");
+
+class Grybas {
+  constructor() {
+    this.svoris = this.rand(5, 45);
+    this.valgomas = !this.rand(0, 1);
+    this.sukurmijes = !this.rand(0, 1);
+  }
+
+  rand(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+}
+
+class Krepsys {
+  constructor() {
+    this.dydis = 500;
+    this.prikrauta = 0;
+  }
+
+  ideti(grybas) {
+    if (grybas.valgomas && !grybas.sukurmijes) {
+      grybas.prikrauta += grybas.svoris;
+    }
+    return this.dydis > this.prikrauta;
+  }
+}
+
+const krepsys = new Krepsys();
+
+// let s = 0;
+
+while (krepsys.ideti(new Grybas())) {
+  // s++;
+  // if (s === 10) {
+  //   break;
+  // }
+}
+
+console.log(krepsys);

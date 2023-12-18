@@ -1,18 +1,27 @@
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
+console.log("hello");
 
-hamburger.addEventListener("click", mobileMenu);
+// const a = 5;
+// a = 7;
+// console.log(a);
 
-function mobileMenu() {
-  hamburger.classList.toggle("active");
-  navMenu.classList.toggle("active");
+// const x = 10;
+// const y = 9;
+// console.log(y - x > x - y);
+
+for (let i = 5; i < 1; i--) {
+  console.log(i);
 }
 
-const navLink = document.querySelectorAll(".nav-link");
+// function sum(a, b) {
+//   console.log(a + b);
+// }
 
-navLink.forEach((n) => n.addEventListener("click", closeMenu));
+// sum(1, 5);
 
-function closeMenu() {
-  hamburger.classList.remove("active");
-  navMenu.classList.remove("active");
+// for (let i = 5; i < 0; i--) {
+//   console.log(i);
+// }
+
+for (let i = 0; i > 5; i++) {
+  console.log(i);
 }

@@ -1,0 +1,24 @@
+.kvadratai {
+  display: flex;
+  gap: 10px;
+}
+
+.kvadratas {
+  border: 1px solid white;
+  padding: 10px;
+  height: 50px;
+}
+
+.apskritimai {
+  display: flex;
+  gap: 10px;
+}
+
+.apskritimas {
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 100px;
+  padding: 10px;
+  height: 100px;
+  margin-top: 20px;
+}

@@ -1,0 +1,112 @@
+$blue: #8d94ba;
+$violet: #b38cb4;
+$yellow: #f8f272;
+$red: #b6244f;
+$green: #60ab9a;
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  appearance: none;
+  backface-visibility: hidden;
+  background-color: gray;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: transparentize($color: gray, $amount: 0.85) 0 4px 9px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.5;
+  outline: none;
+  overflow: hidden;
+  padding: 13px 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+  margin: 10px;
+
+  &:hover {
+    background-color: darken(gray, 20);
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: 0.35s;
+  }
+
+  &:active {
+    transform: translateY(2px);
+    transition-duration: 0.35s;
+  }
+
+  &:hover {
+    box-shadow: transparentize($color: darken(gray, 20), $amount: 0.8) 0 6px
+      12px;
+  }
+
+  &.blue {
+    background-color: $blue;
+    box-shadow: transparentize($color: $blue, $amount: 0.85) 0 4px 9px;
+    &:hover {
+      background-color: darken($blue, 20);
+      box-shadow: transparentize($color: darken($blue, 20), $amount: 0.8) 0 6px
+        12px;
+    }
+  }
+
+  &.violet {
+    background-color: $violet;
+    box-shadow: transparentize($color: $violet, $amount: 0.85) 0 4px 9px;
+    &:hover {
+      background-color: darken($violet, 20);
+      box-shadow: transparentize($color: darken($violet, 20), $amount: 0.8) 0
+        6px 12px;
+    }
+  }
+
+  &.yellow {
+    background-color: $yellow;
+    box-shadow: transparentize($color: $yellow, $amount: 0.85) 0 4px 9px;
+    &:hover {
+      background-color: darken($yellow, 20);
+      box-shadow: transparentize($color: darken($yellow, 20), $amount: 0.8) 0
+        6px 12px;
+    }
+  }
+
+  &.red {
+    background-color: $red;
+    box-shadow: transparentize($color: $red, $amount: 0.85) 0 4px 9px;
+    &:hover {
+      background-color: darken($red, 20);
+      box-shadow: transparentize($color: darken($red, 20), $amount: 0.8) 0 6px
+        12px;
+    }
+  }
+
+  &.green {
+    background-color: $green;
+    box-shadow: transparentize($color: $green, $amount: 0.85) 0 4px 9px;
+    &:hover {
+      background-color: darken($green, 20);
+      box-shadow: transparentize($color: darken($green, 20), $amount: 0.8) 0 6px
+        12px;
+    }
+  }
+}

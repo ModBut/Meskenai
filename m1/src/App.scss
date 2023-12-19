@@ -31,7 +31,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   width: 70%;
   gap: 10px;
@@ -50,5 +50,61 @@
     &__animal {
       letter-spacing: 2px;
     }
+    &.spin {
+      animation: spin 10s linear infinite;
+    }
+    &.pulse {
+      animation: pulse 1s linear infinite;
+      animation-delay: 0.5s;
+    }
+    &.pointer {
+      cursor: pointer;
+      user-select: none;
+    }
+    &.big {
+      width: 300px;
+      height: 300px;
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.dogs {
+  display: flex;
+  gap: 10px;
+  margin: 30px;
+  padding: 0;
+  .dog {
+    width: 100px;
+    height: 100px;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+  }
+  .circle {
+    border-radius: 50%;
+  }
+  .square {
+    border: 1px solid gray;
   }
 }

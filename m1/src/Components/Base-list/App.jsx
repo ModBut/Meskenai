@@ -1,8 +1,4 @@
 import "./App.scss";
-import "./Components/Base-list/Base-list.css";
-import DogsApskritimai from "./Components/Base-list/DogsApskritimai";
-import DogsKvadratai from "./Components/Base-list/DogsKvadratai";
-import Indeksas from "./Components/Base-list/Indeksai";
 
 function App() {
   const dogs = ["šuo", "šunius", "Bobikas", "kudlius", "Šarikas", "avigalvis"];
@@ -13,23 +9,46 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>React Base List</h1>
-        <div className="kvadratai">
-          {dogs.map((dogs, i) => (
-            <DogsKvadratai key={i} dogs={dogs} />
+        <div className="dogs">
+          {dogs.map((dog, i) => (
+            <div className="dog" key={i}>
+              {dog}
+            </div>
           ))}
         </div>
-        <ol className="apskritimai">
+        <ol className="dogs">
           {SortDogs.map((dogs, i) => (
-            <li key={i}>
-              <DogsApskritimai dogs={dogs} />
-            </li>
+            <div className="dog circle" key={i}>
+              <li>{dogs}</li>
+            </div>
           ))}
         </ol>
-        <div>
-          {dogs.map((dogs, i) => (
-            <Indeksas key={i} dogs={dogs} />
+        <div className="dogs">
+          {dogs.map((dog, i) => (
+            <div className={"dog " + (i % 2 ? "circle" : "square")} key={i}>
+              {dog}
+            </div>
           ))}
         </div>
+
+        <div className="dogs">
+          {dogs.map((dog, i) =>
+            dog[0] === dog[0].toUpperCase() ? null : (
+              <div className="dog" key={i}>
+                {dog}
+              </div>
+            )
+          )}
+        </div>
+        {/* <div className="dogs">
+          {dogs.map((dogs, i) =>
+            dogs.length(
+              <div className="dog" key={i}>
+                {dogs}
+              </div>
+            )
+          )}
+        </div> */}
       </header>
     </div>
   );

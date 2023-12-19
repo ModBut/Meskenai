@@ -90,7 +90,9 @@ function App() {
         </div> */}
         <div className="squares">
           {farm.map((animal, i) => (
-            <Animal key={i} animal={animal} />
+            <li>
+              <Animal key={i} animal={animal} />
+            </li>
           ))}
         </div>
       </header>

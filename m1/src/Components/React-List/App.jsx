@@ -1,5 +1,6 @@
 import "./App.scss";
 import Planers from "./Components/React-List/Planers";
+import Tvenkinys from "./Components/React-List/Tvenkinys";
 
 function App() {
   const seaPlaners = [
@@ -19,11 +20,12 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>REACT List</h1>
-        <ul>
-          <li>
-            <Planers seaPlaners={seaPlaners} />
-          </li>
-        </ul>
+        <div>
+          <Planers seaPlaners={seaPlaners} />
+        </div>
+        <div>
+          <Tvenkinys />
+        </div>
       </header>
     </div>
   );

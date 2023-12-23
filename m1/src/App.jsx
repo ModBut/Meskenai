@@ -1,75 +1,96 @@
 import "./App.scss";
-import BigSq1 from "./Components/025/028/BigSq1";
-import BigSq2 from "./Components/025/028/BigSq2";
-import Sq from "./Components/025/028/Sq";
-import GetRandomInt from "./Function/rand";
-import RandomColor from "./Function/randomColor";
+import Blue from "./Components/React-state/Blue";
+import Red from "./Components/React-state/Red";
+import Squares from "./Components/React-state/Squares";
+import randNumber from "./Function/rand";
 import "./buttons.scss";
-import { useEffect, useState } from "react";
+import "./form.scss";
+import { useState } from "react";
 
 export default function App() {
-  const [squares, setSquares] = useState([]);
 
-  const [sq2, setSq2] = useState("#444444");
-  const [sq1, setSq1] = useState("#444444");
-  const [sync, setSync] = useState(false);
+    const [circle, setCircle] = useState(true);
+    const [randomNumber, setRandomNumber] = useState(randNumber(5, 25));
+    const [number, setNumber] = useState(0);
+    const [squares, setSquares] = useState([]);
+    const [redSquares, setRedSquares] = useState([]);
+    const [blueSquares, setBlueSquares] = useState([]);
 
-  useEffect(() => {
-    console.log("Squares are changed");
-    if (sync) {
-      setSquares((s) => s.map((s) => ({ ...s, show: true })));
-      setSync(true);
+    const toggleShape = () => {
+      setCircle(circle => !circle);
+    };
+
+    const changeNumber = () => {
+      setRandomNumber(randNumber(5, 25));
+    };
+
+    const plus = () => {
+      setNumber(n => n + 1);
     }
-  }, [squares]);
 
-  const add = () => {
-    setSquares((s) => [
-      ...s,
-      { color: RandomColor(), id: GetRandomInt(1000, 30000000), show: true },
+    const minus = () => {
+      setNumber(n => n - 3);
+    }
+
+    const add = () => {
+      setSquares((s) => [...s, {show: true}
     ]);
-  };
+    };
 
-  const reset = () => {
-    setSquares((s) => s.map((s) => ({ ...s, show: false })));
-  };
+    const addRed = () => {
+      setRedSquares((r) => [...r, {show: true}])
+    }
 
-  const syncSpin = () => {
-    setSquares((s) => s.map((s) => ({ ...s, show: false })));
-    setSync(true);
-  };
+    const addBlue = () => {
+      setBlueSquares((b) => [...b, {show: true}])
+    }
 
-  return (
+    const reset = () => {
+      setRedSquares((r) => r.map((r) => ({...r, show: false})))
+      setBlueSquares((b) => b.map((b) => ({...b, show: false})))
+    }
+
+    return (
     <div className="App">
       <header className="App-header">
-        <h1>This is STATE part 2</h1>
-        <div className="squares">
-          {squares.map((s, i) =>
-            s.show ? <Sq setSquares={setSquares} square={s} key={i} /> : null
+        <h1>React State</h1>
+        <div className="circle"
+        style={{
+          borderRadius: circle ? '50%' : '0%',
+        }}
+      >{randomNumber}</div>
+       <div className="buttons">
+        <button className="blue" onClick={toggleShape}>Change</button>
+        
+      <button className="red" onClick={toggleShape}>Change</button>
+      <button className="green" onClick={changeNumber}>Random</button>
+       </div>
+       <div className='number'>
+        {number}
+       </div>
+       <div className="buttons">
+        <button className="violet" onClick={plus}>+</button>
+        <button className="wine" onClick={minus}>-</button>
+       </div>
+       <div className='squares'>
+        {
+        squares.map((s, i) => s.show ? <Squares setSquares={setSquares} square={s} key={i}/> : null
+        )}
+       </div>
+       <div className="buttons">
+          <button className="green" onClick={add}>Add</button>
+       </div>
+       <div className="squares">
+          {redSquares.map((r, i) => r.show ? <Red setRedSquares={setRedSquares} redSquare={r} key={i}/> : null
           )}
-        </div>
-        <div className="buttons">
-          <button className="red" onClick={add}>
-            +
-          </button>
-          <button className="blue" onClick={reset}>
-            0
-          </button>
-          <button
-            className="green"
-            onClick={(_) =>
-              setSquares((s) => s.map((s) => ({ ...s, show: true })))
-            }
-          >
-            *
-          </button>
-          <button className="yellow" onClick={syncSpin}>
-            sync
-          </button>
-        </div>
-        <div className="squares">
-          <BigSq1 sq1={sq1} setSq1={setSq2} />
-          <BigSq2 sq2={sq2} setSq2={setSq1} />
-        </div>
+          {blueSquares.map((b, i) => b.show ? <Blue setBlueSquares={setBlueSquares} blueSquare={b} key={i}/> : null
+          )}
+       </div>
+       <div>
+        <button className="red" onClick={addRed}>Add Red</button>
+        <button className="blue" onClick={addBlue}>Add Blue</button>
+        <button className="violet" onClick={reset}>Reset</button>
+       </div>
       </header>
     </div>
   );

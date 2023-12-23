@@ -3,12 +3,21 @@ $violet: #b38cb4;
 $yellow: #f8f272;
 $red: #b6244f;
 $green: #60ab9a;
+$wine: #823038;
+$orange: #FCAB64;
+$aquamarine: #A1FCDF;
+$plum: #7D387D;
+$mint: #BDEDE0;
+
 
 .buttons {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  width: 70%;
+  margin: 20px;
 }
 
 button {
@@ -106,6 +115,56 @@ button {
     &:hover {
       background-color: darken($green, 20);
       box-shadow: transparentize($color: darken($green, 20), $amount: 0.8) 0 6px
+        12px;
+    }
+  }
+
+  &.wine {
+    background-color: $wine;
+    box-shadow: transparentize($color: $wine, $amount: 0.85) 0 4px 9px;
+    &:hover {
+      background-color: darken($wine, 20);
+      box-shadow: transparentize($color: darken($wine, 20), $amount: 0.8) 0 6px
+        12px;
+    }
+  }
+
+  &.orange {
+    background-color: $orange;
+    box-shadow: transparentize($color: $orange, $amount: 0.85) 0 4px 9px;
+    &:hover {
+      background-color: darken($orange, 20);
+      box-shadow: transparentize($color: darken($orange, 20), $amount: 0.8) 0 6px
+        12px;
+    }
+  }
+
+  &.aquamarine {
+    background-color: $aquamarine;
+    box-shadow: transparentize($color: $aquamarine, $amount: 0.85) 0 4px 9px;
+    &:hover {
+      background-color: darken($aquamarine, 20);
+      box-shadow: transparentize($color: darken($aquamarine, 20), $amount: 0.8) 0 6px
+        12px;
+    }
+  }
+
+  &.plum {
+    background-color: $plum;
+    box-shadow: transparentize($color: $plum, $amount: 0.85) 0 4px 9px;
+    &:hover {
+      background-color: darken($plum, 20);
+      box-shadow: transparentize($color: darken($plum, 20), $amount: 0.8) 0 6px
+        12px;
+    }
+  }
+
+  &.mint {
+    background-color: $mint;
+    box-shadow: transparentize($color: $mint, $amount: 0.85) 0 4px 9px;
+    &:hover {
+      background-color: darken($mint, 20);
+      box-shadow: transparentize($color: darken($mint, 20), $amount: 0.8) 0 6px
         12px;
     }
   }

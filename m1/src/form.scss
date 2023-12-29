@@ -120,29 +120,31 @@
         }
     }
 
-    input[type='range'] {
+    
+    
+}
+
+.form-range {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    margin-top: 20px;
+
+    &::-webkit-slider-runnable-track {
+        background: skyblue;
+        height: 3px;
+    }
+
+    &::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        background: transparent;
-        cursor: pointer;
-        border: none;
-        width: 100%;
-        margin-top: 20px;
-
-        &::-webkit-slider-runnable-track {
-            background: skyblue;
-            height: 3px;
-        }
-
-        &::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            margin-top: -12px;
-            background-color: skyblue;
-            height: 28px;
-            width: 20px;
-        }
-
+        margin-top: -12px;
+        background-color: skyblue;
+        height: 28px;
+        width: 20px;
     }
-    
+
 }

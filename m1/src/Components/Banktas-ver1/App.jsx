@@ -1,7 +1,7 @@
 // import "./App.scss";
 import "./buttons.scss";
 import "./Bank.scss"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Account from "./Components/Banktas-ver1/Acount";
 
 

@@ -1,5 +1,16 @@
-export function Show({color}) {
+export function Show({color, setDeleteData, setEditData}) {
     return (
-        <h2 style={{color: color.color}}>Color</h2>
+        <div className="showLine">
+        <div style={{
+        color: color.color,
+        backgroundColor: color.color,
+        width: color.size / 2 + 'px',
+        height: color.size / 2 + 'px'
+        }}></div>
+        <div className="buttons">
+            <button className="red" onClick={() => setDeleteData(color)}>Delete</button>
+            <button className="green" onClick={() => setEditData(color)}>Edit</button>
+        </div>
+        </div>
     );
 }

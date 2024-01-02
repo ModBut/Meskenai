@@ -6,7 +6,11 @@ export default function Create({setCreateData}) {
     const [size, setSize] = useState(100);
 
     const handleSubmit = () => {
-        setCreateData({color, size});
+        setCreateData(
+            {
+            color, 
+            size: +size,
+            });
         setColor('#000000');
         setSize(100);
     }

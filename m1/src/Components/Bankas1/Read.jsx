@@ -1,6 +1,6 @@
 import { Show } from './Show';
 
-export default function Read({newAccount, setDeleteData}) {
+export default function Read({newAccount, setDeleteData, setEditData }) {
     return (
         <div className="card mt-5">
             <div className="card-header ">
@@ -11,39 +11,22 @@ export default function Read({newAccount, setDeleteData}) {
             width: '100%',
             }}>
             <thead>
-                <tr>
-                <th style={{
-            border: '1px solid black'
-        }}>Serial<br/> Nr.</th>
-               <th style={{
-            border: '1px solid black'
-        }}>First Name</th>
-               <th style={{
-            border: '1px solid black',
-        }}>Last Name</th>
-               <th style={{
-            border: '1px solid black',
-        }}>Account Number</th>
-               <th style={{
-            border: '1px solid black',
-        }}>Account Amount</th>
-               <th style={{
-            border: '1px solid black',
-        }}>Actions</th>
-               </tr>
+            <tr>
+               <th>Serial<br/> Nr.</th>
+               <th>First Name</th>
+               <th>Last Name</th>
+               <th>Account Number</th>
+               <th>Account Balance</th>
+               <th>Actions</th>
+            </tr>
             </thead>
             <tbody>
-                
                 {
-                    newAccount.map(newAccount => <tr key={newAccount.id} style={{
-                        border: '1px solid black',
-                    }}><Show newAccount={newAccount} setDeleteData={setDeleteData}/></tr>)
+                    newAccount.map(newAccount => <tr key={newAccount.id}><Show class="list-group-item" newAccount={newAccount} setDeleteData={setDeleteData} setEditData={setEditData}/></tr>)
                 }
-                
             </tbody>
             </table>
         </div> 
         </div>
-        
     )
 }

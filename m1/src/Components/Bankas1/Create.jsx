@@ -4,15 +4,19 @@ export default function Create({setCreateData}) {
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [accountBalance, setAccountBalance] = useState(0);
+    
 
     const handleSubmit = () => {
         setCreateData(
             {
             firstName,
-            lastName
+            lastName,
+            accountBalance,
             });
         setFirstName('');
         setLastName('');
+        setAccountBalance(0)   
     }
 
     return (
@@ -34,6 +38,5 @@ export default function Create({setCreateData}) {
              </div>
        </div>
         </div>
-
     )
 }

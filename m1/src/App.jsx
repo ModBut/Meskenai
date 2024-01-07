@@ -71,7 +71,7 @@ export default function App() {
 
     return (
       <>
-      <div className="container mt-0.5">
+      <div className="container mt-0.5 ">
       <div className="row">
         <div>
           <Read newAccount={newAccount} setDeleteData={setDeleteData} setEditData={setEditData} />
@@ -83,7 +83,7 @@ export default function App() {
     </div>
     <Delete deleteData={deleteData} setDeleteData={setDeleteData} setDestroyData={setDestroyData}/>
     <Messages messages={messages}/>
-    <Edit newAccount={newAccount} editData={editData} setEditData={setEditData} addFunds={addFunds} withdrawFunds={withdrawFunds} setUpdateData={setUpdateData}/>
+    <Edit newAccount={newAccount} editData={editData} setEditData={setEditData} setUpdateData={setUpdateData}/>
     </>
   );
 };

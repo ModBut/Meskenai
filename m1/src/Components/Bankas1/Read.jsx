@@ -6,7 +6,7 @@ export default function Read({newAccount, setDeleteData, setEditData }) {
             <div className="card-header ">
             <h4>Accounts List</h4>
             </div>
-            <div className="card-body ">
+            <div className="card-body">
             <table style={{
             width: '100%',
             }}>

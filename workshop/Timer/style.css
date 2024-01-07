@@ -7,7 +7,7 @@
 body {
     height: 100vh;
     width: 100%;
-    background-image: url(./img.jpg);
+    background-image: url(./img5.jpg);
     background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -20,10 +20,10 @@ body {
 .box {
     height: 60vh;
     width: 550px;
-    background-color: rgb(26, 58, 58);
-    border: 1px solid rgb(26, 58, 58);
+    background-color: rgb(55, 24, 93);
+    border: 1px solid rgb(55, 24, 93);
     border-radius: 10px;
-    box-shadow: 2px 2px 10px 5px rgb(26, 58, 58);
+    box-shadow: 2px 2px 10px 5px rgb(55, 24, 93);
     overflow: hidden;
 }
 
@@ -39,7 +39,7 @@ body {
 .box form {
     height: 35vh;
     width: 100%;
-    background-color:rgb(26, 58, 58);
+    background-color:rgb(55, 24, 93);
     line-height: 45vh;
     text-align: center;
     font-family: monospace;
@@ -85,16 +85,16 @@ input::-webkit-inner-spin-button {
 .box .buttons button {
     padding: 5px 10px;
     font-size: 25px;
-    background-color: rgb(41, 134, 103);
+    background-color: #67597A;
     color: white;
     border-radius: 5px; 
     border: none;
-    box-shadow: 2px 2px 10px 2px  rgb(28, 92, 70);
+    box-shadow: 2px 2px 10px 2px  #67597A;
     cursor: pointer;
 }
 
 .box .buttons button:hover {
-    background-color: rgb(26, 58, 58);
+    background-color: #675980;
 }
 
 .pulse {

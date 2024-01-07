@@ -33,8 +33,6 @@ Timer = () => {
     second.value = sec;
    } else {
     display.innerText = 'Time Over!';
-    box.style.backgroundColor = 'rgb(43, 26, 40)';
-    form.style.backgroundColor = 'rgb(43, 26, 40)';
     box.classList.add('pulse');
    }
 }
@@ -57,8 +55,8 @@ reset.addEventListener('click', () => {
     second.value = null;
 
     display.innerText = 'Timer';
-    box.style.backgroundColor = 'rgb(26, 58, 58)';
-    form.style.backgroundColor = 'rgb(26, 58, 58)';
+    box.style.backgroundColor = 'rgb(55, 24, 93)';
+    form.style.backgroundColor = 'rgb(55, 24, 93)';
     box.classList.remove('pulse');
 })
 

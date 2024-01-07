@@ -1,7 +1,8 @@
-export function Show({newAccount, setDeleteData, setEditData }) {
 
-    
 
+export function Show({newAccount, setDeleteData, setEditData}) {
+
+  
 
     return (
         <>

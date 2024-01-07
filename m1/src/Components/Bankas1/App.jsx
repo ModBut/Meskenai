@@ -23,6 +23,7 @@ export default function App() {
   const [editData, setEditData] = useState(null);
   const [updateData, setUpdateData] = useState(null);
 
+  
   const addMessage = useCallback((type, text) => {
     const id = uuidv4();
     setMessages(prevMessages => [{id, type, text}, ...prevMessages]);

@@ -1,12 +1,10 @@
 
-
 export function Show({newAccount, setDeleteData, setEditData}) {
 
   
 
     return (
         <>
-        <td></td>
         <td>{newAccount.firstName}</td>
         <td>{newAccount.lastName}</td>
         <td>{newAccount.id}</td>

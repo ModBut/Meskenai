@@ -1,11 +1,8 @@
-
-
 const hour = document.querySelector('#hour');
 const minute = document.querySelector('#minute');
 const second = document.querySelector('#second');
 const box = document.querySelector('.box');
 const form = document.querySelector('form');
-
 
 const start = document.querySelector('#start');
 const reset = document.querySelector('#reset');

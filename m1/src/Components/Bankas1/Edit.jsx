@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 export default function Edit({ setUpdateData, editData, setEditData}) {
 
     const [accountBalance, setAccountBalance] = useState(0);
-    const [sum, setSum] = useState();
+    const [sum, setSum] = useState(0);
 
     const addFunds = () => {
-        setAccountBalance(sum + accountBalance);
+        setAccountBalance(+sum + accountBalance);
     }
 
     const WithdrawFunds = () => {
@@ -29,6 +29,7 @@ export default function Edit({ setUpdateData, editData, setEditData}) {
         ...editData, 
         accountBalance: parseInt(accountBalance)});
         setEditData(null);
+        setSum(0);
         if (null === editData) {
             return null;
         }
@@ -39,12 +40,11 @@ export default function Edit({ setUpdateData, editData, setEditData}) {
         <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
                 <div className="modal-header">
-                    <h5 className="modal-title">Edit Balance</h5>
+                <h5 className="modal-title">Edit Account Balance</h5>
                     <button type="button" className="btn-close" onClick={() => setEditData(null)}></button>
                 </div>
                 <div className="modal-body">
-                <input type="number" value={sum} onChange={(e) => setSum(+e.target.value)} className="form-control"/>
-                
+                <input type="number" value={sum} onChange={(e) => setSum(e.target.value)} className="form-control"/>
                 <button style={{marginLeft:'0'}} onClick={addFunds}>Add Funds</button>
                 <button style={{marginLeft:'0'}} onClick={WithdrawFunds}>Withdraw Funds</button>
                 </div>

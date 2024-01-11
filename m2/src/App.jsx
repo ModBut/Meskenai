@@ -1,9 +1,12 @@
 import './form.scss';
 import './buttons.scss';
 import './App.scss';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useEffect } from 'react';
+import {v4 as uuidv4} from 'uuid';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import Messages from './Components/039/Messages';
 
 const URL = 'http://localhost:3001/animals';
 
@@ -16,49 +19,79 @@ function App() {
   const [updateAnimals, setUpdateAnimals] = useState(null);
   const [destroyAnimals, setDestroyAnimals] = useState(null);
   const [editStatus, setEditStatus] = useState(null);
+  const [error, setError] = useState(null);
+  const [messages, setMessages] = useState([]);
+
+  const addMessage = useCallback((type, text) => {
+    const id = uuidv4();
+    setMessages(prevMessages => [{id, type, text}, ...prevMessages]);
+    setTimeout(() => {
+     setMessages(prevMessages => prevMessages.filter(m => m.id !== id));
+    }, 3000);
+   }, []);
 
 
   useEffect(() => {
     axios.get(URL)
-      .then(res => setAnimals(res.data))
-      .catch(err => console.log(err));
+      .then(res => {
+        console.log(res);
+        setAnimals(res.data);
+        setError(null);
+      })
+      .catch(err => {
+        console.log(err);
+        if (err.response) {
+          setError(err.response.status + ' ' + err.response.statusText);
+        } else {
+          setError(err.message);
+        }
+      });
   }, []);
 
   useEffect(() => {
     setAnimalEditInput(animals?.find(animal => animal.id === editStatus)?.name || '');
-  }, [editStatus]);
+  }, [editStatus, setAnimalEditInput, animals]);
 
   useEffect(_ => {
     if (null !== storeAnimals) {
       axios.post(URL, storeAnimals)
         .then(res => {
-          setAnimals([{ name: storeAnimals.name, id: res.data.id }, ...animals]);
+          setAnimals(a => [{ name: storeAnimals.name, id: res.data.id }, ...a]);
           setAnimalInput('');
+          setError(null);
+          addMessage(res.data.type, res.data.message);
         })
         .catch(err => console.log(err));
     }
-  }, [storeAnimals]);
+  }, [storeAnimals, addMessage]);
 
   useEffect(_ => {
     if (null !== destroyAnimals) {
       axios.delete(`${URL}/${destroyAnimals.id}`)
-        .then(_ => {
-          setAnimals(animals.filter(animal => animal.id !== destroyAnimals.id));
+        .then(res => {
+          setAnimals(a => a.filter(animal => animal.id !== destroyAnimals.id));
+          setError(null);
+          addMessage(res.data.type, res.data.message);
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          console.log(err);
+          addMessage('danger', err.response ? err.response.status + ' ' + err.response.statusText : err.message);
+        });
     }
-  }, [destroyAnimals]);
+  }, [destroyAnimals, addMessage]);
 
   useEffect(() => {
     if (null !== updateAnimals) {
       axios.put(`${URL}/${updateAnimals.id}`, updateAnimals)
-        .then(() => {
-          setAnimals(animals.map(animal => animal.id === updateAnimals.id ? {...animal, name: updateAnimals.name} : animal));
+        .then(res => {
+          setAnimals(a => a.map(animal => animal.id === updateAnimals.id ? {...animal, name: updateAnimals.name} : animal));
           setEditStatus(null);
+          setError(null);
+          addMessage(res.data.type, res.data.message);
         })
         .catch(err => console.log(err));
     }
-  }, [updateAnimals]);
+  }, [updateAnimals, addMessage]);
 
   const submit = () => {
     setStoreAnimals({name: animalInput});
@@ -103,7 +136,7 @@ function App() {
           animals && animals.lenght && <p>No Animals Found</p>
         }
         {
-          !animals && <p>Animals is loading...</p>
+          !animals && (error ? <p style={{color: 'crimson'}}>{error}</p> : <p>Animals is loading...</p>)
         }
         <div className='form'>
           <input type='text' placeholder='Enter Animal' value={animalInput} onChange={e => setAnimalInput(e.target.value)}/>
@@ -113,6 +146,7 @@ function App() {
           </div>
         </div>
       </header>
+      <Messages messages={messages}/>
     </div>
   );
 }

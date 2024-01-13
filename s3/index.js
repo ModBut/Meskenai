@@ -23,13 +23,22 @@ const newAccount = req.body;
 newAccount.id = uuidv4();
 data.push(newAccount);
 fs.writeFileSync('./data/data.json', JSON.stringify(data));
-res.json({id: newAccount.id});
+res.json({id: newAccount.id, message: 'Account created successfully!', type: 'success'});
 });
 
 app.delete('/account/:id', (req, res) => {
 let data = JSON.parse(fs.readFileSync('./data/data.json', 'utf8'));
 const id = req.params.id;
 data = data.filter(accounts => accounts.id !== id);
+fs.writeFileSync('./data/data.json', JSON.stringify(data));
+res.json({message: 'Account deleted successfully!', type: 'danger'});
+});
+
+app.put('/animals/:id', (req, res) => {
+let data = JSON.parse(fs.readFileSync('./data/data.json', 'utf8'));
+const id = req.params.id;
+const updatedAccount = req.body;
+data = data.map(account => account.id === id ? {...updatedAccount, id} : account);
 fs.writeFileSync('./data/data.json', JSON.stringify(data));
 res.json({status: 'ok'});
 });

@@ -3,9 +3,8 @@ import { Modal, ModalHeader, ModalTitle, Form, ModalBody } from "react-bootstrap
 
 export default function Delete({account, show, handleClose, setDestroyAccount}) {
 
-
     return (
-        <>
+    <>
         <Modal show={show} onHide={handleClose}>
             <Form>
                 <ModalHeader>
@@ -14,9 +13,9 @@ export default function Delete({account, show, handleClose, setDestroyAccount}) 
                 </ModalHeader>
                 <ModalBody>
                 <p>Are you sure?</p>
-          </ModalBody>
+                </ModalBody>
                 <div className="modal-footer">
-                    <button className="red" onClick={() => setDestroyAccount(account)}>Delete</button>
+                    <button onClick={() => setDestroyAccount(account)}>Delete</button>
                     <button className="violet" onClick={() => handleClose()}>Cancel</button>
                 </div>
             </Form>

@@ -1,7 +1,6 @@
 
 export function Show({newAccount, setDeleteData, setEditData}) {
 
-  
 
     return (
         <>

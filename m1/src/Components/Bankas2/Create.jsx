@@ -15,13 +15,13 @@ export default function Create({setStoreAccounts, show, handleClose}) {
         });
         setFirstName('');
         setLastName('');
-        setAccountBalance(0);
+        setAccountBalance();
         handleClose();
     }
 
     return (
         <>
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose} >
             <Form>
                 <ModalHeader>
                     <ModalTitle>Create New Account</ModalTitle>
@@ -39,7 +39,7 @@ export default function Create({setStoreAccounts, show, handleClose}) {
                 </ModalBody>
                 <div className="modal-footer">
               <Button onClick={handleSubmit} variant="primary" type="submit">
-              Add
+              Add Account
             </Button>
           </div>
             </Form>

@@ -1,5 +1,5 @@
 import "./App.scss";
-// import './buttons.scss';
+import './buttons.scss';
 import './form.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
@@ -9,7 +9,6 @@ import { useEffect } from "react";
 import axios from 'axios';
 import {v4 as uuidv4} from 'uuid';
 import { Stack } from "react-bootstrap";
-// import Delete from "./Components/Bankas2/Delete";
 import Edit from "./Components/Bankas2/Edit";
 import Messages from "./Components/Bankas2/Message";
 
@@ -20,13 +19,12 @@ function App() {
   const [accounts, setAccounts] = useState([]);
   const [storeAccounts, setStoreAccounts] = useState(null);
   const [showCreateModal, setShowCreatetModal] = useState(false);
-  // const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [destroyAccount, setDestroyAccount] = useState(null);
-  const [updateAccount, setUpdateAccount] = useState(null);
-  // const [editStatus, setEditStatus] = useState(null);
+  // const [updateAccount, setUpdateAccount] = useState(null);
   const [messages, setMessages] = useState([]);
   const [totalClients, setTotalClients] = useState(0);
+
 
   const addMessage = useCallback((type, text) => {
     const id = uuidv4();
@@ -36,18 +34,11 @@ function App() {
     }, 4000);
    }, []);
 
-  
-
   useEffect(() => {
     axios.get(URL)
       .then(res => setAccounts(res.data))
       .catch(err => console.log(err));
   }, []);
-
-  // useEffect(() => {
-  //   setTransactionAmount(accounts?.find(account => account.id === editStatus)?.account || 0);
-  //   }, [editStatus, setTransactionAmount, accounts]);
-
 
   useEffect(() => {
     if(null !== storeAccounts) {
@@ -74,56 +65,52 @@ function App() {
     }
   }, [destroyAccount, addMessage]);
 
-  useEffect(() => {
-    if (null !== updateAccount) {
-      axios.put(`${URL}/${updateAccount.id}`, updateAccount)
-      .then(() => {
-        setAccounts(a => a.map(account => account.id === updateAccount.id ? {...account, account: updateAccount.account} : account))
-      })
-      .catch(err => console.log(err));
-    }
-  }, [updateAccount]);
-
-  const handleClose = () => {
-    setShowCreatetModal(false);
-    setShowEditModal(false);
-  }
+  // useEffect(() => {
+  //   if (updateAccount !== null) {
+  //     axios.put(`${URL}/${updateAccount.id}`, updateAccount)
+  //       .then((res) => {
+  //         setAccounts((a) => a.map((account) => account.id === updateAccount.id ? { ...account, name: updateAccount.name } : account
+  //         ));
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }
+  // }, [updateAccount]);
 
   useEffect(() => {
     setTotalClients(accounts.length);
   }, [accounts]);
 
+  const sortedAccounts = accounts.slice().sort((a, b) => a.lastName.localeCompare(b.lastName));
+  const handleClose = () => {
+    setShowCreatetModal(false);
+    setShowEditModal(false);
+  }
+
   return (
         <>
-            <Container className="my-4">
-            <div className='card mt-5'>
+        <Container className="my-4">
+            <div className='card mt-5' style={{margin: '0'}}>
            <Create setStoreAccounts={setStoreAccounts} show={showCreateModal} handleClose={handleClose}/>
             <Stack direction='horizontal' gap='2' className="mb-4">
                 <h3 className="me-auto m-3">Saskaitų sąrašas</h3>
-                
-                <button onClick={() => setShowCreatetModal(true)} className="m-3">
+                <button className='deepblue m-3' onClick={() => setShowCreatetModal(true)}>
                 + Sukurti naują sąskaitą
                 </button>
-                
               </Stack>
               <div className="me-auto m-3">Bendras sąskaitų skaičius: {totalClients}</div>
               <div className="me-auto m-3">Bendras sąskaitų likutis:</div>
-                {accounts
-                .sort((a, b) => a.lastName.localeCompare(b.lastName))
+                {sortedAccounts && sortedAccounts.length !== 0 && sortedAccounts
                     .map(account =>  
-                    <ul className="list-group list-group ">
-                      <div key={account.id} className="mb-3"> 
+                    <ul className="list-group list-group">
+                      <div key={account.id}> 
                         <div className="list-group-item">Vardas: {account.firstName}</div>
                         <div className="list-group-item">Pavardė: {account.lastName}</div>
                         <div className="list-group-item">Sąskaitos numeris: {account.id}</div>
-                        {/* <div className="list-group-item">Account Balance: {account.accountBalance} €</div> */}
-                        <Stack gap='2' className="mb-4">
-                        {/* <button  onClick={() => setShowEditModal(true)}>Edit Account Balance</button> */}
-                        <Edit setUpdateAccount={setUpdateAccount} addMessage={addMessage}
-                        show={showEditModal} handleClose={handleClose}/>
-                        <button onClick={() => setDestroyAccount(account)}>Ištrinti sąskaitą</button>
-                        {/* <Delete account={account} show={showDeleteModal} setDestroyAccount={setDestroyAccount} handleClose={setShowDeleteModal}/> */}
-                        </Stack>
+                        <Edit show={showEditModal} handleClose={handleClose}/>
+                        <div className="delete-button">
+                        <button onClick={() => setShowEditModal(true)}>Koreguoti sąskaitos likutį</button>
+                        <button className='red' onClick={() => setDestroyAccount(account)}>Ištrinti sąskaitą</button>
+                        </div>
                         </div>
                         </ul>
                     )
@@ -132,9 +119,10 @@ function App() {
                        accounts && !accounts.length && accounts.sort((a, b) => a.lastName.localeCompare(b.lastName)) 
                       }   
                       {
-                     accounts && !accounts.length && <p>No Accounts Found</p>
+                      accounts && !accounts.length && <p style={{paddingLeft: '18px'}}>Sąrašas tuščias</p>
                       }
             <Messages messages={messages}/>
+            
             </div>
             </Container>
             </>

@@ -8,6 +8,7 @@ $orange: #FCAB64;
 $aquamarine: #A1FCDF;
 $plum: #7D387D;
 $mint: #BDEDE0;
+$deepblue: #0094C6;
 
 
 .buttons {
@@ -165,6 +166,16 @@ button:not(.btn-close) {
     &:hover {
       background-color: darken($mint, 20);
       box-shadow: transparentize($color: darken($mint, 20), $amount: 0.8) 0 6px
+        12px;
+    }
+  }
+
+  &.deepblue {
+    background-color: $deepblue;
+    box-shadow: transparentize($color: $deepblue, $amount: 0.85) 0 4px 9px;
+    &:hover {
+      background-color: darken($deepblue, 20);
+      box-shadow: transparentize($color: darken($deepblue, 20), $amount: 0.8) 0 6px
         12px;
     }
   }

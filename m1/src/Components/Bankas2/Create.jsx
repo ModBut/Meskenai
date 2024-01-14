@@ -5,17 +5,17 @@ export default function Create({setStoreAccounts, show, handleClose}) {
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [accountBalance, setAccountBalance] = useState(0);
+    // const [accountBalance, setAccountBalance] = useState(0);
 
     const handleSubmit = () => {
         setStoreAccounts({
             firstName, 
             lastName, 
-            accountBalance
+            accountBalance: 0
         });
         setFirstName('');
         setLastName('');
-        setAccountBalance();
+        // setAccountBalance();
         handleClose();
     }
 
@@ -24,22 +24,22 @@ export default function Create({setStoreAccounts, show, handleClose}) {
         <Modal show={show} onHide={handleClose} >
             <Form>
                 <ModalHeader>
-                    <ModalTitle>Create New Account</ModalTitle>
+                    <ModalTitle>Sukurti naują sąskaitą</ModalTitle>
                     <button type="button" className="btn-close" onClick={() => handleClose()}></button>
                 </ModalHeader>
                 <ModalBody>
                 <FormGroup>
-                <label className="form-label">First Name</label>
-                <input type='text' value={firstName} onChange={e => setFirstName(e.target.value)}/>
+                <label className="form-label">Vardas</label>
+                <input type='text' value={firstName} onChange={e => setFirstName(e.target.value)} className="form-control"/>
                 </FormGroup>
                 <FormGroup>
-                <label className="form-label">First Name</label>
-                <input type='text' value={lastName} onChange={e => setLastName(e.target.value)}/>
+                <label className="form-label">Pavardė</label>
+                <input type='text' value={lastName} onChange={e => setLastName(e.target.value)} className="form-control"/>
                 </FormGroup>
                 </ModalBody>
                 <div className="modal-footer">
-              <Button onClick={handleSubmit} variant="primary" type="submit">
-              Add Account
+              <Button onClick={handleSubmit} className='deepblue' variant="primary" type="submit">
+              Pridėti
             </Button>
           </div>
             </Form>

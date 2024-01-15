@@ -2,18 +2,16 @@ import { useState } from "react";
 import {ModalHeader, ModalTitle, Form, FormGroup, Modal, ModalBody } from "react-bootstrap";
 
 
-export default function Edit({show, handleClose}) {
+export default function Edit({show, handleClose, accountBalance, setAccountBalance}) {
 
     const [transactionAmount, setTransactionAmount] = useState(0);
-    const [accountBalance, setAccountBalance] = useState(0);
+    
 
     const addFunds = () => {
     const amount = parseFloat(transactionAmount);
-      if (!isNaN(amount) && amount > 0) {
-        setAccountBalance(accountBalance + amount);
+        setAccountBalance(amount + accountBalance);
         setTransactionAmount(0);
         // setUpdateAccounts({name: transactionAmount})
-      }
     }
 
     const wthdrawFunds = () => {
@@ -24,9 +22,15 @@ export default function Edit({show, handleClose}) {
     }
     }
 
+    // const save = () => {
+    //     setUpdateAccount({
+    //     ...editStatus,
+    //     accountBalance: parseInt(accountBalance)})
+    // }
+
     return (
         <>
-        <div className="list-group-item"> Sąskaitos likutis: {accountBalance} €</div>
+        {/* <div className="list-group-item"> Sąskaitos likutis: {accountBalance} €</div> */}
         <Modal show={show} onHide={handleClose}>
             <Form>
             <ModalHeader>
@@ -42,7 +46,7 @@ export default function Edit({show, handleClose}) {
             <div className="modal-footer">
             <button type="button" className='deepblue' onClick={addFunds}>Pridėti</button>
             <button type="button" className='red' onClick={wthdrawFunds}>Atimti</button>
-            <button type="button" onClick={() => handleClose()}>Išsaugoti pakitimus</button>
+            <button type="button" onClick={() => handleClose()} className='button-lina'>Išsaugoti pakitimus</button>
             </div>
             </Form>
         </Modal>

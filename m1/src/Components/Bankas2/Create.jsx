@@ -5,17 +5,17 @@ export default function Create({setStoreAccounts, show, handleClose}) {
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    // const [accountBalance, setAccountBalance] = useState(0);
+    const [accountBalance, setAccountBalance] = useState(0);
 
     const handleSubmit = () => {
         setStoreAccounts({
             firstName, 
             lastName, 
-            accountBalance: 0
+            accountBalance
         });
         setFirstName('');
         setLastName('');
-        // setAccountBalance();
+        setAccountBalance(0);
         handleClose();
     }
 

@@ -224,4 +224,8 @@ td, th {
   border: 1px solid #0094C6 !important;
   background-color: white !important;
   color: black !important;
+  &:hover {
+    background-color: #0094C6 !important;
+    color: white !important;
+  }
 }

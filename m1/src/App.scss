@@ -208,10 +208,7 @@ td, th {
   text-align: center;
 }
 
-.list-group-item {
-  font-size: 22x;
-  
-}
+
 
 .delete-button {
   display: flex;
@@ -228,4 +225,15 @@ td, th {
     background-color: #0094C6 !important;
     color: white !important;
   }
+}
+
+
+.list-group-item {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.account-list {
+  font-weight: lighter !important;
+  font-size: 16px !important;
 }

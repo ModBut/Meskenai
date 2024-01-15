@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Modal, ModalHeader, ModalTitle, Form, FormGroup, ModalBody } from "react-bootstrap";
 
-export default function Edit({ show, handleClose, setUpdateAccount, account, addMessage }) {
+export default function Edit({ show, handleClose, setUpdateAccount, account, addMessage}) {
   const [transactionAmount, setTransactionAmount] = useState(0);
   const [error, setError] = useState([]);
 
@@ -27,7 +27,7 @@ export default function Edit({ show, handleClose, setUpdateAccount, account, add
   useEffect(() => {
     setTransactionAmount(0); 
     setError(''); 
-  }, [show]);
+  },[setTransactionAmount]);
 
 
   return (
@@ -43,7 +43,6 @@ export default function Edit({ show, handleClose, setUpdateAccount, account, add
               <label className="form-label">Įvesti sumą: <div style={{color: 'red'}}>{error}</div></label>
               <div style={{display: 'flex', flexDirection: 'row', gap: '50px'}}>
               <input type="number" value={transactionAmount} onChange={(e) => setTransactionAmount(e.target.value)} className="form-control" />
-              
               </div>
             </FormGroup>
           </ModalBody>

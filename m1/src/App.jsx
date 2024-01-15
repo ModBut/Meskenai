@@ -23,6 +23,8 @@ function App() {
   const [messages, setMessages] = useState([]);
   const [totalAccounts, setTotalAccounts] = useState(0);
   const [totalBalance, setTotalBalance] = useState(0);
+  const [showEmptyAccounts, setShowEmptyAccounts] = useState(true);
+  const [showNonEmptyAccounts, setShowNonEmptyAccounts] = useState(true);
 
 
   const addMessage = useCallback((type, text) => {
@@ -102,30 +104,39 @@ function App() {
   return (
     <>
       <Container>
-        <div className="card mt-5" style={{ margin: "0" }}>
+        <div className="card mt-3" style={{ margin: "0" }}>
           <Create setStoreAccounts={setStoreAccounts} show={showCreateModal} handleClose={handleClose} />
           <Stack direction="horizontal" gap="2" className="mb-4">
             <h3 className="me-auto m-3">Sąskaitų sąrašas</h3>
-            <button className='button-lina'>Tuščios</button>
-            <button className='button-lina'>Turinčios lėšų</button>
-            <button className='button-lina'>Visos</button>
+            <button className='button-lina' onClick={() => setShowEmptyAccounts(!showEmptyAccounts)}>Tuščios sąskaitos</button>
+            <button className='button-lina' onClick={() => setShowNonEmptyAccounts(!showNonEmptyAccounts)}>Sąskaitos su lėšomis</button>
             <button className='deepblue m-3' onClick={() => setShowCreateModal(true)}>
               + Sukurti naują sąskaitą
             </button>
           </Stack>
-          <div className="me-auto m-3">Bendras sąskaitų skaičius: {totalAccounts}</div>
-          <div className="me-auto m-3">Bendras sąskaitų likutis: {totalBalance} €</div>
+          <div className="me-auto m-3" style={{fontWeight: 'bold'}}>Bendras sąskaitų skaičius: <span className="account-list">{totalAccounts}</span></div>
+          <div className="me-auto m-3" style={{fontWeight: 'bold'}}>Bendras sąskaitų likutis: <span className="account-list">{totalBalance} €</span></div>
           {accounts && accounts.length !== 0 ? (
             <ul className="list-group list-group">
               {accounts
+                .filter((account) => (showEmptyAccounts && account.accountBalance > 0) || (showNonEmptyAccounts && account.accountBalance === 0))
                 .sort((a, b) => a.lastName.localeCompare(b.lastName))
                 .map((account) => (
                   <li key={account.id} className="list-group list-group">
-                    <div className="list-group-item">Vardas: {account.firstName}</div>
-                    <div className="list-group-item">Pavardė: {account.lastName}</div>
-                    <div className="list-group-item">Sąskaitos numeris: {account.id}</div>
-                    <div className="list-group-item">Sąskaitos suma: {account.accountBalance} €</div>
-                    <Edit show={showEditModal} handleClose={handleClose} setUpdateAccount={setUpdateAccount} account={account} addMessage={addMessage}/>
+                    <div className="list-group-item">Vardas: <span className="account-list">{account.firstName}</span></div>
+                    <div className="list-group-item">Pavardė: <span className="account-list">{account.lastName}</span></div>
+                    <div className="list-group-item">Sąskaitos numeris: <span className="account-list">{account.id}</span></div>
+                    <div className="list-group-item">Sąskaitos suma: <span className="account-list">{account.accountBalance} €</span></div>
+                    {account && (
+                      <Edit
+                        show={showEditModal}
+                        handleClose={handleClose}
+                        setUpdateAccount={setUpdateAccount}
+                        account={account}
+                        addMessage={addMessage}
+                        updateAccount={updateAccount}
+                      />
+                    )}
                     <div className="delete-button">
                       <button onClick={() => setShowEditModal(true)} className="button-lina">
                         Koreguoti sąskaitos likutį

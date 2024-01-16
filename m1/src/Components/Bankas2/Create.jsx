@@ -35,7 +35,7 @@ export default function Create({ setStoreAccounts, show, handleClose }) {
             </FormGroup>
           </ModalBody>
           <div className="modal-footer">
-            <Button onClick={handleSubmit} className="deepblue" variant="primary" type="submit">
+            <Button onClick={handleSubmit} className="deepblue" variant="primary" type='button'>
               Pridėti
             </Button>
           </div>

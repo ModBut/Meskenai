@@ -3,7 +3,7 @@ import { Modal, ModalHeader, ModalTitle, Form, FormGroup, ModalBody } from "reac
 
 export default function Edit({ show, handleClose, setUpdateAccount, account, addMessage}) {
   const [transactionAmount, setTransactionAmount] = useState(0);
-  const [error, setError] = useState([]);
+  const [error, setError] = useState('');
 
   const addFunds = () => {
     const amount = parseFloat(transactionAmount);
@@ -53,7 +53,7 @@ export default function Edit({ show, handleClose, setUpdateAccount, account, add
             <button type="button" className="red" onClick={withdrawFunds}>
               Atimti
             </button>
-            <button type="button" onClick={() => handleClose()} className="button-lina">
+            <button type='button' onClick={() => handleClose()} className="button-lina">
               Išsaugoti pakitimus
             </button>
           </div>

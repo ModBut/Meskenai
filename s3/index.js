@@ -44,7 +44,6 @@ res.json({status: 'ok'});
 });
 
 
-
 app.listen(port, () => {
   console.log(`Meskenai klauso ${port} porto.`);
 });

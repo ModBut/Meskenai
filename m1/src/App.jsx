@@ -100,22 +100,29 @@ function App() {
     }
   };
 
+  const refresh = () => window.location.reload(true)
 
   return (
     <>
       <Container>
         <div className="card mt-3" style={{ margin: "0" }}>
           <Create setStoreAccounts={setStoreAccounts} show={showCreateModal} handleClose={handleClose} />
-          <Stack direction="horizontal" gap="2" className="mb-4">
-            <h3 className="me-auto m-3">Sąskaitų sąrašas</h3>
+          <Stack direction="horizontal" gap="2" className="mb-4" style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div style={{display: 'flex', flexDirection: 'column'}}>
+          <span style={{fontWeight: 'bold', margin: '5px 0 5px 18px'}}>Statistika:</span>
+          <div style={{fontWeight: 'bold', margin: '0 0 5px 18px'}}>Bendras sąskaitų skaičius: <span className="account-list">{totalAccounts}</span></div>
+          <div style={{fontWeight: 'bold', marginLeft: '18px'}}>Bendra sąskaitų suma: <span className="account-list">{totalBalance} €</span></div>
+          </div>
+          <div>
             <button className='button-lina' onClick={() => setShowEmptyAccounts(!showEmptyAccounts)}>Tuščios sąskaitos</button>
             <button className='button-lina' onClick={() => setShowNonEmptyAccounts(!showNonEmptyAccounts)}>Sąskaitos su lėšomis</button>
-            <button className='deepblue m-3' onClick={() => setShowCreateModal(true)}>
+            <button type='button'className='button-lina' onClick={refresh}>Visos sąskaitos</button>
+            <button type='button' className='deepblue' onClick={() => setShowCreateModal(true)}>
               + Sukurti naują sąskaitą
             </button>
+            </div>
           </Stack>
-          <div className="me-auto m-3" style={{fontWeight: 'bold'}}>Bendras sąskaitų skaičius: <span className="account-list">{totalAccounts}</span></div>
-          <div className="me-auto m-3" style={{fontWeight: 'bold'}}>Bendras sąskaitų likutis: <span className="account-list">{totalBalance} €</span></div>
+          
           {accounts && accounts.length !== 0 ? (
             <ul className="list-group list-group">
               {accounts

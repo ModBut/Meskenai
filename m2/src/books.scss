@@ -96,7 +96,7 @@ section {
     width: 100%;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-end;
     flex-direction: row;
     padding: 5rem 1rem 0 1rem;
     box-sizing: border-box;
@@ -106,5 +106,21 @@ section {
         flex-direction: column;
         border: 1px solid #999;
         padding: 1rem;
+    }
+
+    .prices {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        input, label {
+            margin: 0 0.5rem;
+            width: 100%;
+        }
+        div {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
     }
 }

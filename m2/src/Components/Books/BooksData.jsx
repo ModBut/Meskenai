@@ -8,11 +8,12 @@ export const BooksData = createContext();
 
 export const BooksDataProvider = ({ children }) => {
 
-const [books, setBooks] = useState([]);
+const [books, setBooks] = useState(null);
 const [types, setTypes] = useState(null);
 const [sort, setSort] = useState('default');
 const [filterCat, setFilterCat] = useState('all');
-
+const [filterMin, setFilterMin] = useState(0);
+const [filterMax, setFilterMax] = useState(0);
 
 useEffect(_ => {
     axios.get(BOOK_URL)
@@ -34,6 +35,9 @@ useEffect(_ => {
 
 useEffect(() => {
     setBooks(b => {
+        if (null === b) {
+            return null;
+        }
         const sorted = [...b];
         switch (sort) {
             case 'price_asc':
@@ -57,15 +61,46 @@ useEffect(() => {
 }, [sort, setBooks]);
 
 useEffect(() => {
-    setBooks(b => b.map(book => {
-      if  (book.type === filterCat) {
-        book.show.delete('cat');
-      } else {
-        book.show.add('cat');
-      }
-      return book;
-    }))
-}, [filterCat, setBooks])
+    setBooks(b => {
+        if (null == b) {
+            return null;
+        }
+        return b.map(book => {
+        if (filterCat === 'all') {
+            book.show.delete('cat');
+            return book;
+        } else if (book.type === +filterCat) {
+            book.show.delete('cat');
+        } else {
+            book.show.add('cat');
+        }
+        return book;
+    });
+});
+}, [filterCat, setBooks]);
+
+useEffect(() => {
+    if (filterMin > filterMax) {
+        setFilterMax(filterMin)
+    }
+    if (filterMax < filterMin) {
+        setFilterMin(filterMax);
+    }
+    setBooks(b => {
+        if (null === b) {
+            return null;
+        }
+        return b.map(book => {
+            if (book.price >= filterMin && book.price <= filterMax) {
+                book.show.delete('price');
+            } else {
+                book.show.add('price');
+            }
+            return book;
+        });
+    });
+    
+}, [filterMin, filterMax, setBooks])
 
 
     return (
@@ -76,6 +111,10 @@ useEffect(() => {
             setSort,
             filterCat, 
             setFilterCat,
+            filterMin, 
+            setFilterMin,
+            filterMax, 
+            setFilterMax
         }}>
             {children}
         </BooksData.Provider>

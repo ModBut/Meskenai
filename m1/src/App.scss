@@ -237,3 +237,24 @@ td, th {
   font-weight: lighter !important;
   font-size: 16px !important;
 }
+
+nav.navbar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+ 
+  .navbar-brand {
+    text-decoration: none;
+  }
+ 
+  .navbar-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+

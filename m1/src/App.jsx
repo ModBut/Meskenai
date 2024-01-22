@@ -1,14 +1,11 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Nav from './Components/Bankas3/Nav';
-import './App.scss';
+import LoginForm from "./Components/login/LoginForm/LoginForm";
+import './Login.scss';
 
 
-function App() {
+export default function App() {
     return (
-        <>
-        <Nav/>
-        </>
+        <div>
+            <LoginForm/>
+        </div>
     )
 }
-
-export default App;

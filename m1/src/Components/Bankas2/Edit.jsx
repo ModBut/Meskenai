@@ -27,7 +27,7 @@ export default function Edit({ show, handleClose, setUpdateAccount, account, add
   useEffect(() => {
     setTransactionAmount(0); 
     setError(''); 
-  },[setTransactionAmount]);
+  }, [setTransactionAmount, setError]);
 
 
   return (
@@ -35,12 +35,12 @@ export default function Edit({ show, handleClose, setUpdateAccount, account, add
       <Modal show={show} onHide={handleClose}>
         <Form>
           <ModalHeader>
-            <ModalTitle>Koreguoti sąskaitos likutį</ModalTitle>
+            <ModalTitle>Edit Account Balance</ModalTitle>
             <button type="button" className="btn-close" onClick={() => handleClose()}></button>
           </ModalHeader>
           <ModalBody>
             <FormGroup>
-              <label className="form-label">Įvesti sumą: <div style={{color: 'red'}}>{error}</div></label>
+              <label className="form-label">Enter amount: <div style={{color: 'red'}}>{error}</div></label>
               <div style={{display: 'flex', flexDirection: 'row', gap: '50px'}}>
               <input type="number" value={transactionAmount} onChange={(e) => setTransactionAmount(e.target.value)} className="form-control" />
               </div>
@@ -48,13 +48,13 @@ export default function Edit({ show, handleClose, setUpdateAccount, account, add
           </ModalBody>
           <div className="modal-footer">
             <button type="button" className="deepblue" onClick={addFunds}>
-              Pridėti
+              Add Funds
             </button>
             <button type="button" className="red" onClick={withdrawFunds}>
-              Atimti
+              Withdraw Funds
             </button>
             <button type='button' onClick={() => handleClose()} className="button-lina">
-              Išsaugoti pakitimus
+              Save
             </button>
           </div>
         </Form>

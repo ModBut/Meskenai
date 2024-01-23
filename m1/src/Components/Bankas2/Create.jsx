@@ -21,22 +21,22 @@ export default function Create({ setStoreAccounts, show, handleClose }) {
       <Modal show={show} onHide={handleClose}>
         <Form>
           <ModalHeader>
-            <ModalTitle>Sukurti naują sąskaitą</ModalTitle>
+            <ModalTitle>Create New Account</ModalTitle>
             <button type="button" className="btn-close" onClick={() => handleClose()}></button>
           </ModalHeader>
           <ModalBody>
             <FormGroup>
-              <label className="form-label">Vardas</label>
-              <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="form-control" />
+              <label className="form-label">First Name</label>
+              <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="form-control" required/>
             </FormGroup>
             <FormGroup>
-              <label className="form-label">Pavardė</label>
-              <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} className="form-control" />
+              <label className="form-label">Last Name</label>
+              <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} className="form-control" required/>
             </FormGroup>
           </ModalBody>
           <div className="modal-footer">
-            <Button onClick={handleSubmit} className="deepblue" variant="primary" type='button'>
-              Pridėti
+            <Button onClick={handleSubmit} className="deepblue" type='button'>
+              Add
             </Button>
           </div>
         </Form>

@@ -5,7 +5,6 @@ import OperationButton from './Components/Calculator/OperationButton';
 import {ACTION} from './Components/Calculator/action';
 
 
-
 function reducer(state, { type, payload }) {
     switch(type) {
         case ACTION.ADD_DIGIT:

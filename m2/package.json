@@ -21,7 +21,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "homepage": "https://modbut.github.io/Meskenai/"
   },
   "eslintConfig": {
     "extends": [
@@ -44,4 +45,5 @@
   "devDependencies": {
     "gh-pages": "^6.1.1"
   }
+  
 }

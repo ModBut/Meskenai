@@ -27,11 +27,9 @@ function App() {
   const [messages, setMessages] = useState([]);
   const [totalAccounts, setTotalAccounts] = useState(0);
   const [totalBalance, setTotalBalance] = useState(0);
-  const [showEmptyAccounts, setShowEmptyAccounts] = useState(true);
-  const [showNonEmptyAccounts, setShowNonEmptyAccounts] = useState(true);
   const [editAccount, setEditAccount] = useState(null);
-
-
+  
+  
   const addMessage = useCallback((type, text) => {
     const id = uuidv4();
     setMessages((prevMessages) => [{ id, type, text }, ...prevMessages]);
@@ -45,7 +43,7 @@ function App() {
       .get(URL)
       .then((res) => setAccounts(res.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [setAccounts]);
 
   useEffect(() => {
     if (storeAccounts !== null) {
@@ -108,7 +106,7 @@ function App() {
     }
   };
 
-  
+
   return (
     <>
    
@@ -122,19 +120,17 @@ function App() {
           <div style={{fontWeight: 'bold', marginLeft: '18px'}}>Total accounts balance sum: <span className="account-list">{totalBalance} €</span></div>
           </div>
           <div>
-            <button className='button-lina' onClick={() => setShowEmptyAccounts(!showEmptyAccounts)}>Empty Accounts</button>
-            <button className='button-lina' onClick={() => setShowNonEmptyAccounts(!showNonEmptyAccounts)}>Sąskaitos su lėšomis</button>
+            <button className='button-lina'>Empty Accounts</button>
+            <button className='button-lina'>Sąskaitos su lėšomis</button>
             <button type='button'className='button-lina'>All accounts</button>
             <button type='button' className='deepblue' onClick={() => setShowCreateModal(true)}>
               + Add new account
             </button>
             </div>
           </Stack>
-          
           {accounts && accounts.length !== 0 ? (
             <ul className="list-group list-group">
               {accounts
-                .filter((account) => (showEmptyAccounts && account.accountBalance > 0) || (showNonEmptyAccounts && account.accountBalance === 0))
                 .sort((a, b) => a.lastName.localeCompare(b.lastName))
                 .map((account) => (
                   <li key={account.id} style={{listStyle: 'none'}}>

@@ -1,166 +1,25 @@
-import { useReducer } from 'react';
-import './calculator.scss';
-import DigitButton from './Components/Calculator/DigitiButton';
-import OperationButton from './Components/Calculator/OperationButton';
-import {ACTION} from './Components/Calculator/action';
+import './App.scss';
+import './form.scss';
+import './buttons.scss';
+import useLocalStorage from './Hooks/useLocalStorage';
 
+export default function App() {
 
-function reducer(state, { type, payload }) {
-    switch(type) {
-        case ACTION.ADD_DIGIT:
-            if (state.overwrite) {
-                return {
-                    ...state,
-                    currentOperand: payload.digit,
-                    overwrite: false
-                }
-            }
-            if (payload.digit === '0' && state.currentOperand === '0') {
-                return state;
-            }
-            if (payload.digit === '.' && state.currentOperand.includes('.')) {
-                return state;
-            }
-            return {
-                ...state,
-                currentOperand: `${state.currentOperand || ''}${payload.digit}`,
-            }
-        case ACTION.CHOOSE_OPERATION:
-            if (state.currentOperand == null && state.previousOperand == null) {
-                return state;
-            }
-            if (state.currentOperand == null) {
-                return {
-                    ...state,
-                    operation: payload.operation,
-                }
-            }
-
-            if (state.previousOperand == null) {
-                return {
-                  ...state,
-                  operation: payload.operation,
-                  previousOperand: state.currentOperand,
-                  currentOperand: null,
-                }
-              }
-
-              return {
-                ...state,
-                previousOperand: evaluate(state),
-                operation: payload.operation,
-                currentOperand: null
-              }
-        case ACTION.CLEAR:
-            return {}
-        case ACTION.EVALUATE:
-            if (state.operation == null || 
-                state.currentOperand == null || 
-                state.previousOperand == null
-            ) {
-                return state;
-            }
-            return {
-                ...state,
-                overwrite: true,
-                previousOperand: null,
-                operation: null,
-                currentOperand: evaluate(state)
-            }
-        case ACTION.DELETE_DIGIT:
-            if (state.overwrite) {
-                return {
-                    ...state,
-                overwrite: false,
-                currentOperand: null
-                }
-            }
-            if (state.currentOperand == null) return state;
-            if (state.currentOperand.length === 1) {
-                return {
-                    ...state,
-                    currentOperand: null
-                }
-            }
-            return {
-                ...state,
-                currentOperand: state.currentOperand.slice(0, -1)
-            }
-            default:
-    }
-}
-
-function evaluate({currentOperand, previousOperand, operation}) {
-    const prev = parseFloat(previousOperand)
-    const current = parseFloat(currentOperand)
-    if (isNaN(prev) || isNaN(current)) return ''
-    let computation = ''
-    switch (operation) {
-        case '+':
-            computation = prev + current
-            break;
-        case  '-':
-            computation = prev - current
-            break;
-        case  '*':
-            computation = prev * current
-            break;
-        case  '÷':
-            computation = prev / current
-            break;
-        default:
-    }
-
-    return computation.toString()
-}
-
-const INTEGER_FORMATER = new Intl.NumberFormat('en-us', {
-    maximumFractionDigits: 0,
-})
-function formatOperand(operand) {
-    if (operand == null) return
-    const [integer, decimal] = operand.split('.')
-    if (decimal == null) return INTEGER_FORMATER.format(integer)
-    return `${INTEGER_FORMATER.format(integer)}.${decimal}`
-}
-
-function App() {
-
-    const [ {currentOperand, previousOperand, operation}, dispatch] = useReducer(
-        reducer, 
-        {}
-    )
+    const [racoons, setRacoons, meskenai, setMeskenai] = useLocalStorage('racoons', 'meskenai', 0);
 
     return (
-        <div className="calculator-grid">
-            <div className="output">
-                <div className="previous-operand">
-                {formatOperand(previousOperand)} {operation}
-                </div>
-                <div className="current-operand">{formatOperand(currentOperand)}</div>
+        <div className="App">
+          <header className="App-header">
+            <h1>CUSTOM HOOK</h1>
+            <h2>Now we have {racoons} Racoons</h2>
+            <div className='buttons'>
+            <button className='green' onClick={() => setRacoons(r => r + 1)}>+</button>
             </div>
-            <button className="span-two" 
-            onClick={() => dispatch({type: ACTION.CLEAR})}>
-                AC</button>
-            <button onClick={() => dispatch({type: ACTION.DELETE_DIGIT})}>DEL</button>
-            <OperationButton operation='÷' dispatch={dispatch}/>
-            <DigitButton digit='1' dispatch={dispatch}/>
-            <DigitButton digit='2' dispatch={dispatch}/>
-            <DigitButton digit='3' dispatch={dispatch}/>
-            <OperationButton operation='*' dispatch={dispatch}/>
-            <DigitButton digit='4' dispatch={dispatch}/>
-            <DigitButton digit='5' dispatch={dispatch}/>
-            <DigitButton digit='6' dispatch={dispatch}/>
-            <OperationButton operation='+' dispatch={dispatch}/>
-            <DigitButton digit='7' dispatch={dispatch}/>
-            <DigitButton digit='8' dispatch={dispatch}/>
-            <DigitButton digit='9' dispatch={dispatch}/>
-            <OperationButton operation='-' dispatch={dispatch}/>
-            <DigitButton digit='.' dispatch={dispatch}/>
-            <DigitButton digit='0' dispatch={dispatch}/>
-            <button className="span-two"  onClick={() => dispatch({type: ACTION.EVALUATE})}>=</button>
+            <h2>Dabar mes turim tiek {meskenai} Meskenu</h2>
+            <div className='buttons'>
+            <button className='green' onClick={() => setMeskenai(m => m + 1)}>+</button>
+            </div>
+          </header>
         </div>
-    )
+      );
 }
-
-export default App;

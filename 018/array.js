@@ -4,6 +4,7 @@ const small = [1, 0, 1, 1, 0, 1, 0, 1, 1, 0];
 
 const ones = small.filter((item) => item == 1);
 
+
 console.log(ones);
 
 const farm = [
@@ -141,3 +142,5 @@ animals.sort((a, b) => {
 });
 
 console.log(animals);
+
+

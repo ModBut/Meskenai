@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Raleway:wght@300;400;500;600;700&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    // font-family: 'Montserrat', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    transition: .3s ease;
+}
+
+:root {
+    --yellowColor: #e1f296;
+    --lightGreenColor: #5aba8a;
+    --darkGreenColor: #01565b;
+    --textColor: #044561;
+    --h1Color: #012e33;
+    --cardColor: #4c9fa7;
+    --whiteColor: hsl(0, 0%, 100%);
+    --greyText: rgb(190, 190, 190);
+    --inputColor: hsl(224, 39%, 80%);
+
+    --h1FontSize: 2.5rem;
+    --h2FontSize: 1.25rem;
+    --h3FontSize: 1rem;
+    --normalFontSize: .938rem;
+    --smallFontSize: .813rem;
+    --smallestFontSize: .75rem;
+}
+
+html {
+    font-size: 90%;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.icon {
+    font-size: var(--h2FontSize);
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+    align-items: center;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--darkGreenColor);
+    padding: .8rem 1rem;
+    color: var(--textColor);
+
+    .icon {
+        margin-left: .5rem;
+    }
+
+    :hover {
+        background: palegreen;
+        color: var(--darkGreenColor);
+    }
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding: 1rem;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 95vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem 1rem;
+    overflow: hidden;
+}

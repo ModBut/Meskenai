@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql');
+const md5 = require('md5');
+const { v4: uuidv4 } = require('uuid');
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -17,12 +19,42 @@ app.use(bodyParser.json());
 
 connection.connect();
 
-
 app.get('/', (req, res) => {
   console.log('Buvo užklausta /');
   res.send('Labas Bebrai!');
 });
 
+const doAuth = (req, res, next) => {
+  const token = req.query.token || req.body.token || '';
+  console.log('token', token);
+  return next();
+};
+
+app.use(doAuth);
+
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  const sql = 'SELECT * FROM users WHERE name = ? AND password = ?';
+  connection.query(sql, [username, md5(password)], (err, results) => {
+    if (err) {
+      res.status(500);
+    } else {
+      if (results.length > 0) {
+        const token = md5(uuidv4());
+        const sql = 'INSERT INTO sessions (id, user_id, time) VALUES (?, ?, ?)';
+        connection.query(sql, [token, results[0].id, Date.now()], (err) => {
+          if (err) {
+            res.status(500);
+          } else {
+            res.json({ success: true, token, name: results[0].name });
+          }
+        });
+      } else {
+        res.status(401).json({ message: 'Invalid name or password' });
+      }
+    }
+  });
+});
 
 
 app.listen(port, () => {

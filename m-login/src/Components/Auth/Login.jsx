@@ -1,16 +1,28 @@
-import { useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import useLogin from "../../Hooks/useLogin";
+import { Auth } from "../../Contexts/Auth";
+import { AFTER_LOGIN_URL, SITE_URL } from '../../Constants/main';
 
 export default function Login() {
 
-    const [userName, setUserName] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [setInputs, response] = useLogin();
+    const {user} = useContext(Auth);
 
     const go = () => {
-        setInputs({userName, password});
+        setInputs({username, password});
+        setPassword('');
     }
 
+    useEffect(() => {
+        if (user) {
+            window.location.href = `${SITE_URL}/${AFTER_LOGIN_URL}`;
+        }
+    }, [user])
+
+    if (!user) {
+        
     return (
         <div className="login-page">
             <div className="box">
@@ -22,12 +34,16 @@ export default function Login() {
                 </div>
                 <form className="form">
                     <label>UserName</label>
-                    <input type="text" name='name' autoComplete="username" value={userName} onChange={e => setUserName(e.target.value)}/>
+                    <input type="text" name='name' autoComplete="username" value={username} onChange={e => setUsername(e.target.value)}/>
                     <label>Password</label>
                     <input type='password' name='password' autoComplete="current-password" value={password} onChange={e => setPassword(e.target.value)}/>
-                    <button className="green" onClick={go}>Login</button>
+                    <button type='button' className="green" onClick={go}>Login</button>
                 </form>
             </div>
         </div>
-    )
+        )
+    }
+    else {
+        return null;
+    }
 }

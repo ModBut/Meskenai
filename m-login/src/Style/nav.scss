@@ -27,7 +27,7 @@ nav {
         display: flex;
         align-items: center;
         gap: 20px;
-        a {
+        a, i {
             color: $blue;
             font-size: 20px;
             cursor: pointer;

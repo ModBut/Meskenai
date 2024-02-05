@@ -28,13 +28,10 @@ const checkUserIsLogged = (user, res) => {
   }
 }
 
-// router
-
 app.get('/', (req, res) => {
   console.log('Buvo užklausta /');
   res.send('Labas Bebrai!');
 });
-
 
 
 const doAuth = (req, res, next) => {
@@ -122,8 +119,17 @@ app.post('/login', (req, res) => {
 
 });
 
-
-
+app.put('/fruits/:id', (req, res) => {
+  const {name, color, form} = req.body;
+  const sql = 'UPDATE fruits SET name = ?, color = ?, form = ? WHERE id = ?';
+  connection.query(sql, [name, color, form, req.params.id], (err) => {
+    if (err) {
+      res.status(500);
+    } else {
+      res.json({success: true, id: +req.params.id});
+    }
+  })
+})
 
 
 app.listen(port, () => {

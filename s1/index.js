@@ -46,7 +46,6 @@ app.post('/form', (req, res) => {
 
 app.get('/form-js', (req, res) => {
   let html = fs.readFileSync('./htmls/jsform.html', 'utf8');
-
   let data = fs.readFileSync('./data/data.json', 'utf8');
   data = JSON.parse(data);
   let htmlData = '';

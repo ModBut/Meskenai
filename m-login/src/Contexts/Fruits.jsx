@@ -5,14 +5,27 @@ export const Fruits = createContext();
 
 export const FruitsProvider = ({children}) => {
 
-    const {fruits, setFruits, createFruit, setCreateFruit, editFruit, setEditFruit, deleteFruit, setDeleteFruit} = useFruits();
+    const { fruits, setFruits, filteredFruits,
+        createFruit,
+        setCreateFruit,
+        editFruit,
+        setEditFruit,
+        deleteFruit,
+        setDeleteFruit,
+        filterForm,
+        setFilterForm,} = useFruits();
 
     return (
         <Fruits.Provider value={{
-            fruits, setFruits,
-            createFruit, setCreateFruit,
-            editFruit,setEditFruit,
-            deleteFruit, setDeleteFruit
+            fruits, setFruits, filteredFruits,
+        createFruit,
+        setCreateFruit,
+        editFruit,
+        setEditFruit,
+        deleteFruit,
+        setDeleteFruit,
+        setFilterForm,
+        filterForm
             }}>
                 {children}
         </Fruits.Provider>

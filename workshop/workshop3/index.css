@@ -1,0 +1,31 @@
+.grid-container {
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 200px 250px;
+    grid-auto-rows: minmax(150px, auto);
+    grid-gap: 20px;
+    grid-template-areas: 
+    "header header"
+    "sidebar content"
+    "sider content"
+}
+
+.grid-item-1 {
+    display: grid;
+    grid-area: header;
+    background-color: rgb(0, 4, 255);
+}
+
+.grid-item-2 {
+    display: grid;
+    grid-area: sidebar;
+    background-color: rgb(0, 4, 255);
+}
+.grid-item-3 {
+    display: grid;
+    grid-area: sidebar content;
+    background-color: rgb(0, 4, 255);
+}
+
+
+

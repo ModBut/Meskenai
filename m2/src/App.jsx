@@ -1,17 +1,24 @@
-import './Bank.scss';
-import Account from './Bank/AccountSection/Account';
-import Body from './Bank/BodySection/Body';
-import SideBar from './Bank/SideBarSection/SideBar';
+import { BooksDataProvider } from "./Components/Books/BooksData";
+import BooksList from "./Components/Books/BooksList";
+import Top from "./Components/Books/Top";
+import './books.scss'
 
 export default function App() {
 
     return (
-        <div className='container'>
+        <BooksDataProvider>
+            <section>
+            <div className="container">
+                <Top/>
+            </div>
+            </section>
+            <section>
+                <div className="container">
 
-            <SideBar/>
-            <Body/>
-            <Account/>
+                    <BooksList />
 
-        </div>
-    )
+                </div>
+            </section>
+        </BooksDataProvider>
+    );
 }

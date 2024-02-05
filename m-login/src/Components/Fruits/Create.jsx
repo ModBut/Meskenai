@@ -18,7 +18,7 @@ export default function Create() {
             form,
             id: uuidv4(),
         };
-        setFruits(f => [...f, {...fruit}]);
+        setFruits(fruits => [...fruits, fruit]);
         setCreateFruit(fruit);
         window.location.href = '#fruits';
     }

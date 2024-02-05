@@ -4,10 +4,11 @@ import { SERVER_URL } from '../Constants/main';
 import { Auth } from '../Contexts/Auth';
 
 export default function useFruits() {
-    const [fruits, setFruits] = useState(null);
+    const [fruits, setFruits] = useState([]);
     const [createFruit, setCreateFruit] = useState(null);
     const [editFruit, setEditFruit] = useState(null);
     const [deleteFruit, setDeleteFruit] = useState(null);
+    const [filterForm, setFilterForm] = useState('all');
 
     const { user, logout } = useContext(Auth);
 
@@ -17,7 +18,7 @@ export default function useFruits() {
 
         axios.get(withTokenUrl)
             .then(res => {
-                setFruits(res.data);
+                setFruits(res.data.map((fruit, i) => ({...fruit, row : i, show: new Set()})));
                 console.log(res.data);
             })
             .catch(err => {
@@ -29,7 +30,6 @@ export default function useFruits() {
                 console.log(err);
             });
     }, []);
-    
     
     useEffect(_ => {
         if (null !== createFruit) {
@@ -47,15 +47,33 @@ export default function useFruits() {
         }
     }, [createFruit]);
 
+    useEffect(_ => {
+        if (null !== editFruit) {
+            axios.put(`${SERVER_URL}/fruits/${editFruit.id}`, editFruit)
+                .then(res => {
+                    setEditFruit(null);
+                    console.log(res.data);
+                    setFruits(f => f.map(fruit => fruit.id === res.data.id ? {...fruit, temp: false} : fruit));
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
+    }, [editFruit]);
 
+    const filteredFruits = fruits.filter(fruit => filterForm === 'all' || fruit.form === filterForm);
+    
     return {
-        fruits,
+        
+        fruits: filteredFruits,
         setFruits,
         createFruit,
         setCreateFruit,
         editFruit,
         setEditFruit,
         deleteFruit,
-        setDeleteFruit
+        setDeleteFruit,
+        setFilterForm,
+        filterForm 
     };
 }

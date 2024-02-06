@@ -24,7 +24,26 @@ const checkUserIsLogged = (user, res) => {
   if (user) {
     return true;
   } else {
-    res.status(401).json({ message: 'Not logged in' });
+    res.status(401).json({ 
+        message: 'Not logged in',
+        status: 'login'
+    });
+  }
+}
+
+const checkUserIsAuthorized = (user, res, roles) => {
+  if (user && roles.includes(user.role)) {
+    return true;
+  } else if (user) {
+    res.status(401).json({ 
+      message: 'Not authorized',
+      status: 'role' 
+    });
+  } else {
+    res.status(401).json({ 
+      message: 'Not logged in',
+      status: 'login' 
+    });
   }
 }
 
@@ -32,7 +51,6 @@ app.get('/', (req, res) => {
   console.log('Buvo užklausta /');
   res.send('Labas Bebrai!');
 });
-
 
 const doAuth = (req, res, next) => {
 
@@ -66,7 +84,7 @@ app.use(doAuth);
 
 app.get('/fruits', (req, res) => {
 
-  if (!checkUserIsLogged(req.user, res)) {
+  if (!checkUserIsAuthorized(req.user, res, ['admin', 'user'])) {
     return;
   }
 
@@ -79,7 +97,6 @@ app.get('/fruits', (req, res) => {
     }
   });
 });
-
 
 app.post('/fruits', (req, res) => {
   const { name, color, form } = req.body;
@@ -123,6 +140,17 @@ app.put('/fruits/:id', (req, res) => {
   const {name, color, form} = req.body;
   const sql = 'UPDATE fruits SET name = ?, color = ?, form = ? WHERE id = ?';
   connection.query(sql, [name, color, form, req.params.id], (err) => {
+    if (err) {
+      res.status(500);
+    } else {
+      res.json({success: true, id: +req.params.id});
+    }
+  });
+});
+
+app.delete('/fruits/:id', (req, res) => {
+  const sql = 'DELETE FROM fruits WHERE id = ?';
+  connection.query(sql, [req.params.id], (err) => {
     if (err) {
       res.status(500);
     } else {

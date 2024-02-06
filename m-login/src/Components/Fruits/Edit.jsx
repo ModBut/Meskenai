@@ -10,8 +10,8 @@ export default function Edit() {
     const [form, setForm] = useState('');
     const [fruit, setFruit] = useState(null);
 
-    const { fruits, setCreateFruit, setFruits, setEditFruit } = useContext(Fruits);
-    const params = useContext(Router);
+    const { fruits, setFruits, setEditFruit } = useContext(Fruits);
+    const {params} = useContext(Router);
 
     useEffect(_ => {
         if (null === fruits) {
@@ -41,7 +41,7 @@ export default function Edit() {
             form,
             id: fruit.id,
         };
-        setFruits(f => f.map(fruit => fruit.id === editedFruit.id ? {...editedFruit, temp: true} : fruit));
+        setFruits(f => f.map(fruit => fruit.id === editedFruit.id ? {...editedFruit, temp: true, preEdit: fruit} : fruit));
         setEditFruit(editedFruit);
         window.location.href = '#fruits';
     }
@@ -93,7 +93,10 @@ export default function Edit() {
                             </div>
                         </div>
                     </div>
+                    <div className='fruits-center'>
                     <button className="green" onClick={save}>Save</button>
+                    <button className='blue' onClick={() => window.location.href = '#fruits'}>Cancel</button>
+                    </div>
                 </div>
             </div>
         </div>

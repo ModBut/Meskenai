@@ -5,10 +5,11 @@ import List from "./List";
 import Create from "./Create";
 import Edit from "./Edit";
 import { FruitsProvider } from "../../Contexts/Fruits";
+import Delete from "./Delete";
 
 export default function Index() {
 
-    const params = useContext(Router);
+    const {params} = useContext(Router);
 
     let returnComponent = <Page404 />;
 
@@ -17,8 +18,12 @@ export default function Index() {
 
     } else if (params.length === 1 && params[0] === 'create') {
         returnComponent = <Create />;
+
     } else if (params.length === 2 && params[0] === 'edit') {
         returnComponent = <Edit />;
+
+    } else if (params.length === 2 && params[0] === 'delete') {
+        returnComponent = <Delete/>
     }
 
     return (

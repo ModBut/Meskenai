@@ -4,6 +4,7 @@ import FruitsIndex from '../Components/Fruits/Index';
 import Login from "../Components/Auth/Login";
 import Page404 from "../Components/Page404";
 import Page401 from "../Components/Page401";
+import UsersIndex from "../Components/Users/Index";
 
 export const Router = createContext();
 
@@ -23,7 +24,7 @@ export const RouterProvider = ({ children }) => {
 
     const [notAuthorized, setNotAuthorized] = useState(null);
 
-    const show401Page = _ => {
+    const show401Page = () => {
         setNotAuthorized(page401);
     }
 
@@ -46,7 +47,9 @@ export const RouterProvider = ({ children }) => {
     const routes = [
         { path: '#home', component: <HomeIndex /> },
         { path: '#fruits', component: <FruitsIndex /> },
-        { path: '#login', component: <Login />}
+        { path: '#login', component: <Login />},
+        { path: '#register', component: <UsersIndex to='register' />},
+        { path: '#users', component: <UsersIndex/>}
 
     ];
 

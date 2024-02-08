@@ -19,7 +19,10 @@ export default function useUsers() {
         if (null === user) {
             return;
         }
-
+        if ('admin' !== user.role) {
+            setUsers([{name: user.user, id: +user.id, role: user.role}]);
+            return;
+        }
         const withTokenUrl = 
         user ? `${SERVER_URL}/users?token=${user.token}` : `${SERVER_URL}/users`;
 
@@ -37,6 +40,7 @@ export default function useUsers() {
                         show401Page();
                     }
                 }
+                setUsers({error: true})
             });
     }, []);
     
@@ -107,13 +111,12 @@ export default function useUsers() {
         }
     }, [deleteUser]);
 
-
-
     return {
         
         users, setUsers,
         createUser, setCreateUser,
         editUser, setEditUser,
         deleteUser, setDeleteUser
+        
     };
 }

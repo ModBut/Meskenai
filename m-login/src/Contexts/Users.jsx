@@ -6,23 +6,23 @@ export const Users = createContext();
 export const UsersProvider = ({children}) => {
 
     const { users, setUsers,
-        createUsers,
-        setCreateUser,
+        createUser,
+        setCreateUse,
         editUser,
-        setEditUsers,
-        deleteUsers,
-        setDeleteUsers,
+        setEditUser,
+        deleteUser,
+        setDeleteUser,
         } = useUsers();
 
     return (
         <Users.Provider value={{
             users, setUsers,
-            createUsers,
-            setCreateUser,
+            createUser,
+            setCreateUse,
             editUser,
-            setEditUsers,
-            deleteUsers,
-            setDeleteUsers,
+            setEditUser,
+            deleteUser,
+            setDeleteUser,
             }}>
                 {children}
         </Users.Provider>

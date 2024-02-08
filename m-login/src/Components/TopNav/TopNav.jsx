@@ -12,6 +12,7 @@ export default function TopNav() {
                 <a href='#home'>Home</a>
                 <Gate roles='admin|user|animal'><a href='#fruits'>Fruits</a></Gate>
                 <Gate roles='admin|user'><a href='#fruits/create'>Add Fruits</a></Gate>
+                <Gate roles='admin'><a href="#users">Users</a></Gate>
             </div>
             <div className="login">
                 {

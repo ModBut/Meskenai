@@ -19,7 +19,6 @@ app.use(bodyParser.json());
 
 connection.connect();
 
-
 const checkUserIsLogged = (user, res) => {
   if (user) {
     return true;
@@ -34,6 +33,8 @@ const checkUserIsLogged = (user, res) => {
 const checkUserIsAuthorized = (user, res, roles) => {
   if (user && roles.includes(user.role)) {
     return true;
+  } else if (user && roles.includes('self:' + user.id)) {
+    return true;
   } else if (user) {
     res.status(401).json({ 
       message: 'Not authorized',
@@ -47,15 +48,10 @@ const checkUserIsAuthorized = (user, res, roles) => {
   }
 }
 
-
-// router
-
 app.get('/', (req, res) => {
   console.log('Buvo užklausta /');
   res.send('Labas Bebrai!');
 });
-
-
 
 const doAuth = (req, res, next) => {
 
@@ -103,7 +99,6 @@ app.get('/fruits', (req, res) => {
   });
 });
 
-
 app.post('/fruits', (req, res) => {
 
   if (!checkUserIsAuthorized(req.user, res, ['admin', 'user'])) {
@@ -138,7 +133,6 @@ app.put('/fruits/:id', (req, res) => {
   });
 });
 
-
 app.delete('/fruits/:id', (req, res) => {
 
   if (!checkUserIsAuthorized(req.user, res, ['admin'])) {
@@ -155,7 +149,6 @@ app.delete('/fruits/:id', (req, res) => {
   });
 });
 
-
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
   const sql = 'SELECT * FROM users WHERE name = ? AND password = ?';
@@ -170,7 +163,7 @@ app.post('/login', (req, res) => {
           if (err) {
             res.status(500);
           } else {
-            res.json({ success: true, token, name: results[0].name, role: results[0].role});
+            res.json({ success: true, token, name: results[0].name, role: results[0].role, id: results[0].id});
           }
         });
       } else {
@@ -195,7 +188,54 @@ app.post('/users', (req, res) => {
   });
 });
 
+app.get('/users', (req, res) => {
 
+  if (!checkUserIsAuthorized(req.user, res, ['admin'])) {
+    return;
+  }
+
+  const sql = 'SELECT * FROM users';
+  connection.query(sql, (err, results) => {
+    if (err) {
+      res.status(500);
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+app.delete('/users/:id', (req, res) => {
+
+  if (!checkUserIsAuthorized(req.user, res, ['admin', 'self:' + req.params.id])) {
+    return;
+  }
+
+  const sql = 'DELETE FROM users WHERE id = ?';
+  connection.query(sql, [req.params.id], (err) => {
+    if (err) {
+      res.status(500);
+    } else {
+      res.json({ success: true, id: +req.params.id });
+    }
+  });
+});
+
+app.put('/users/:id', (req, res) => {
+
+  if (!checkUserIsAuthorized(req.user, res, ['admin'])) {
+    return;
+  }
+
+  const { role } = req.body;
+  const sql = 'UPDATE users SET role = ? WHERE id = ?';
+  connection.query(sql, [role, req.params.id], (err) => {
+    if (err) {
+      res.status(500);
+    } else {
+      res.json({ success: true, id: +req.params.id });
+    }
+  });
+});
 
 
 

@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+.grid-container > div {
+    background-color: crimson;
+    font-family: sans-serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.grid-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
+    /* grid-template-rows: repeat(5, minmax(250px, auto)); */
+    grid-auto-rows: minmax(250px, auto);
+    grid-template-areas: 
+        'header header header header'
+        'hero hero hero sale'
+        'product-1 product-2 product-3 product-4'
+        'product-1 product-5 product-6 product-10'
+        'product-7 product-8 product-9 product-10'
+        'review map map sub'
+        'footer footer footer footer';
+}
+
+.header {
+    grid-area: header;
+}
+
+.hero {
+    grid-area: hero;
+}
+
+.sale {
+    grid-area: sale;
+}
+
+.product-1 {
+    grid-area: product-1;
+}
+.product-2 {
+    grid-area: product-2;
+}
+.product-3 {
+    grid-area: product-3;
+}
+.product-4 {
+    grid-area: product-4;
+}
+.product-5 {
+    grid-area: product-5;
+}
+.product-6 {
+    grid-area: product-6;
+}
+.product-7 {
+    grid-area: product-7;
+}
+.product-8 {
+    grid-area: product-8;
+}
+.product-9 {
+    grid-area: product-9;
+}
+.product-10 {
+    grid-area: product-10;
+}
+
+.review {
+    grid-area: review;
+}
+
+.map {
+    grid-area: map;
+}
+
+.sub {
+    grid-area: sub;
+}
+
+.footer {
+    grid-area: footer;
+}
+
+@media (max-width: 1200px) {
+    .grid-container {
+        grid-template-columns: repeat(3, minmax(250px, 1fr));
+        grid-template-areas: 
+        'header header header'
+        'hero hero sale'
+        'product-1 product-2 product-3'
+        'product-1 product-4 product-5'
+        'product-6 product-7 product-10'
+        'product-8 product-9 product-10'
+        'review map sub'
+        'footer footer footer';
+    }
+}
+
+@media (max-width: 850px) {
+    .grid-container {
+        grid-template-columns: repeat(2, minmax(250px, 1fr));
+        grid-template-areas: 
+        'header header'
+        'hero hero'
+        'sale sale'
+        'product-1 product-2'
+        'product-3 product-4'
+        'product-5 product-6'
+        'product-7 product-8'
+        'product-9 product-10'
+        'review sub'
+        'map map'
+        'footer footer';
+    }
+}
+

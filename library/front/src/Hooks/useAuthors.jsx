@@ -18,7 +18,25 @@ export default function useAuthors(dispachAuthors) {
             .catch (err => {
                 console.log(err);
             })
-    },[dispachAuthors]);
+
+    }, [dispachAuthors]);
+
+    useEffect(() => {
+        if (null !== createAuthor) {
+            axios.post(`${SERVER_URL}/authors`, createAuthor)
+                .then(res => {
+                    setCreateAuthor(null);
+                })
+                .catch(err => {
+                    setCreateAuthor(null)
+                });
+        }
+        
+    }, [createAuthor]);
+
+    // useEffect(() => {
+
+    // })
 
 
     return {

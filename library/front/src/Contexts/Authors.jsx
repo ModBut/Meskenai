@@ -6,7 +6,7 @@ export const Authors = createContext();
 
 export const AuthorsProvider = ({children}) => {
 
-    const [authors, dispachAuthors] = useReducer(authorsReducer, null);
+    const [authors, dispachAuthors] = useReducer(authorsReducer, []);
 
     const {createAuthor, setCreateAuthor, editAuthor, setEditAuthor, deleteAuthor, setDeleteAuthor} = useAuthors(dispachAuthors);
     

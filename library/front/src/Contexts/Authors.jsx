@@ -1,23 +1,25 @@
-import { createContext, useReducer } from "react";
-import authorsReducer from "../Reducers/authorsReducer";
-import useAuthors from "../Hooks/useAuthors";
+import { createContext, useReducer, useState } from 'react';
+import authorsReducer from '../Reducers/authorsReducer';
+import useAuthors from '../Hooks/useAuthors';
 
 export const Authors = createContext();
 
-export const AuthorsProvider = ({children}) => {
+export const AuthorsProvider = ({ children }) => {
 
     const [authors, dispachAuthors] = useReducer(authorsReducer, []);
+    const [deleteAuthor, setDeleteAuthor] = useState(null);
 
-    const {createAuthor, setCreateAuthor, editAuthor, setEditAuthor, deleteAuthor, setDeleteAuthor} = useAuthors(dispachAuthors);
-    
+    const { storeAuthor, setStoreAuthor, updateAuthor, setUpdateAuthor, destroyAuthor, setDestroyAuthor } = useAuthors(dispachAuthors);
+
     return (
         <Authors.Provider value={{
             authors, dispachAuthors,
-            createAuthor, setCreateAuthor, 
-            editAuthor, setEditAuthor, 
+            storeAuthor, setStoreAuthor,
+            updateAuthor, setUpdateAuthor,
+            destroyAuthor, setDestroyAuthor,
             deleteAuthor, setDeleteAuthor
-            }}>
-                {children}
+        }}>
+            {children}
         </Authors.Provider>
-    )
+    );
 }

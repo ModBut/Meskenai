@@ -1,16 +1,17 @@
 import Nav from "../../Components/Nav";
 import { AuthorsProvider } from "../../Contexts/Authors";
 import Create from "./Create";
+import Delete from './Delete';
 import List from "./List";
 
 export default function Index() {
 
     return (
         <AuthorsProvider>
-            <Nav/>
+            <Nav />
             <div className="container">
                 <div className="row">
-                    <div className="col-4 mt-4">
+                    <div className="card-header mt-4 ms-3">
                         <h1>Authors</h1>
                     </div>
                 </div>
@@ -18,13 +19,14 @@ export default function Index() {
             <div className="container">
                 <div className="row">
                     <div className="col-4 mt-4">
-                    <Create/>
+                        <Create />
                     </div>
                     <div className="col-8 mt-4">
-                    <List/>
+                        <List />
                     </div>
                 </div>
             </div>
+            <Delete />
         </AuthorsProvider>
     )
 }

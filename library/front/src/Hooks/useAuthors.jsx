@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import {SERVER_URL} from '../Constants/main';
 import axios from 'axios';
-import {getAuthors} from '../Actions/authors';
+import { v4 as uuidv4 } from 'uuid';
+import {deleteAuthorAsReal, deleteAuthorAsTemp, getAuthors, storeAuthorAsTemp, storeAuthorReal} from '../Actions/authors';
 
 export default function useAuthors(dispachAuthors) {
 
-    const [createAuthor, setCreateAuthor] = useState(null);
-    const [editAuthor, setEditAuthor] = useState(null);
-    const [deleteAuthor, setDeleteAuthor] = useState(null);
+    const [storeAuthor, setStoreAuthor] = useState(null);
+    const [updateAuthor, setUpdateAuthor] = useState(null);
+    const [destroyAuthor, setDestroyAuthor] = useState(null);
 
     useEffect(() => {
         axios.get(`${SERVER_URL}/authors`)
             .then(res => {
-                console.log(res.data);
                 dispachAuthors(getAuthors(res.data));
             })
             .catch (err => {
@@ -22,26 +22,39 @@ export default function useAuthors(dispachAuthors) {
     }, [dispachAuthors]);
 
     useEffect(() => {
-        if (null !== createAuthor) {
-            axios.post(`${SERVER_URL}/authors`, createAuthor)
+        if (null !== storeAuthor) {
+            const uuid = uuidv4();
+            dispachAuthors(storeAuthorAsTemp({...storeAuthor, id: uuid}))
+            axios.post(`${SERVER_URL}/authors`, {...storeAuthor, id: uuid})
                 .then(res => {
-                    setCreateAuthor(null);
+                    setStoreAuthor(null);
+                    dispachAuthors(storeAuthorReal(res.data));
                 })
-                .catch(err => {
-                    setCreateAuthor(null)
+                .catch(() => {
+                    setStoreAuthor(null);
                 });
         }
         
-    }, [createAuthor]);
+    }, [storeAuthor, dispachAuthors]);
 
-    // useEffect(() => {
-
-    // })
+    useEffect(_ => {
+        if (null !== destroyAuthor) {
+            dispachAuthors(deleteAuthorAsTemp(destroyAuthor));
+            axios.delete(`${SERVER_URL}/authors/${destroyAuthor.id}`)
+                .then(res => {
+                    setDestroyAuthor(null);
+                    dispachAuthors(deleteAuthorAsReal(res.data));
+                })
+                .catch(() => {
+                    setDestroyAuthor(null);
+                });
+        }
+    }, [destroyAuthor, dispachAuthors]);
 
 
     return {
-        createAuthor, setCreateAuthor,
-        editAuthor, setEditAuthor,
-        deleteAuthor, setDeleteAuthor
+        storeAuthor, setStoreAuthor,
+        updateAuthor, setUpdateAuthor,
+        destroyAuthor, setDestroyAuthor
     }
 }

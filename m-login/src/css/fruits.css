@@ -1,0 +1,64 @@
+.fruits-bin {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.fruits-center {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.fruits-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+.fruits-box .fruit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 250px;
+  height: 250px;
+}
+.fruits-box .fruit.rounded {
+  border-radius: 30px;
+}
+.fruits-box .fruit.circle {
+  border-radius: 50%;
+}
+.fruits-box .fruit div {
+  color: white;
+  font-size: 30px;
+}
+.fruits-box .fruit span {
+  color: black;
+  font-size: 20px;
+  display: flex;
+  gap: 10px;
+}
+.fruits-box .fruit span b a {
+  color: black;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.fruits-box .fruit span b a:hover {
+  color: green;
+}
+.fruits-box .fruit span b + b a:hover {
+  color: red;
+}

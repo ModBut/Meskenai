@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import {SERVER_URL} from '../Constants/main';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
-import {deleteAuthorAsReal, deleteAuthorAsTemp, getAuthors, storeAuthorAsTemp, storeAuthorReal} from '../Actions/authors';
+import {deleteAuthorAsReal, deleteAuthorAsTemp, deleteAuthorUndo, getAuthors, storeAuthorAsTemp, storeAuthorReal, storeAuthorUndo, updateAuthorAsReal, updateAuthorAsTemp, updateAuthorAsUndo} from '../Actions/authors';
 
 export default function useAuthors(dispachAuthors) {
 
@@ -31,11 +31,27 @@ export default function useAuthors(dispachAuthors) {
                     dispachAuthors(storeAuthorReal(res.data));
                 })
                 .catch(() => {
+                    dispachAuthors(storeAuthorUndo({...storeAuthor, id: uuid}));
                     setStoreAuthor(null);
                 });
         }
         
     }, [storeAuthor, dispachAuthors]);
+
+    useEffect(() => {
+        if (null !== updateAuthor) {
+            dispachAuthors(updateAuthorAsTemp(updateAuthor))
+            axios.put(`${SERVER_URL}/authors/${updateAuthor.id}`, updateAuthor)
+                .then(res => {
+                    setUpdateAuthor(null);
+                    dispachAuthors(updateAuthorAsReal(res.data))
+                })
+                .catch(() => {
+                    dispachAuthors(updateAuthorAsUndo(updateAuthor));
+                    setUpdateAuthor(null);
+                })
+        }
+    }, [updateAuthor, dispachAuthors]);
 
     useEffect(_ => {
         if (null !== destroyAuthor) {
@@ -46,6 +62,7 @@ export default function useAuthors(dispachAuthors) {
                     dispachAuthors(deleteAuthorAsReal(res.data));
                 })
                 .catch(() => {
+                    dispachAuthors(deleteAuthorUndo(destroyAuthor));
                     setDestroyAuthor(null);
                 });
         }

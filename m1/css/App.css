@@ -1,0 +1,255 @@
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.sq-bin {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 70%;
+}
+
+.sq {
+  width: 100px;
+  height: 100px;
+}
+
+.squares {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 70%;
+  gap: 10px;
+  margin: 20px;
+}
+.squares .square {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  background-color: #282c34;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+.squares .square__animal {
+  letter-spacing: 2px;
+}
+.squares .square.spin {
+  animation: spin 10s linear infinite;
+}
+.squares .square.pulse {
+  animation: pulse 1s linear infinite;
+  animation-delay: 0.5s;
+}
+.squares .square.pointer {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.squares .square.big {
+  width: 300px;
+  height: 300px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.dogs {
+  display: flex;
+  gap: 10px;
+  margin: 30px;
+  padding: 0;
+}
+.dogs .dog {
+  width: 100px;
+  height: 100px;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+}
+.dogs .circle {
+  border-radius: 50%;
+}
+.dogs .square {
+  border: 1px solid gray;
+}
+
+.color-circle {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background-color: skyblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+.modal {
+  display: block;
+  background-color: rgba(40, 44, 52, 0.4666666667);
+}
+
+.showLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.showLine .square {
+  display: flex;
+  align-items: center;
+}
+.showLine .buttons {
+  justify-content: flex-end;
+  width: 200px;
+}
+.showLine .color-names {
+  width: 200px;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  position: fixed;
+  top: 30px;
+  right: 50px;
+}
+.messages .alert {
+  width: 100%;
+}
+
+input[type=number] {
+  width: 80px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  text-align: center;
+  user-select: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.big-bin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-width: 300px;
+  min-height: 300px;
+  margin: 30px;
+  border: 2px dashed gray;
+  background-color: #282c34;
+  padding: 0 7px;
+}
+
+td, th {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.delete-button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.button-lina {
+  border: 1px solid #0094C6 !important;
+  background-color: white !important;
+  color: black !important;
+}
+.button-lina:hover {
+  background-color: #0094C6 !important;
+  color: white !important;
+}
+
+.list-group-item {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.account-list {
+  font-weight: lighter !important;
+  font-size: 16px !important;
+}
+
+nav.navbar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+nav.navbar .navbar-brand {
+  text-decoration: none;
+}
+nav.navbar .navbar-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}

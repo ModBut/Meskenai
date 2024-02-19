@@ -1,0 +1,19 @@
+export const GET_BOOKS_FROM_SERVER = 'GET_BOOKS_FROM_SERVER';
+
+export const CREATE_BOOK = 'CREATE_BOOK';
+
+export const CREATE_BOOK_REAL = 'CREATE_BOOK_REAL';
+
+export const CREATE_BOOK_UNDO = 'CREATE_BOOK_UNDO';
+
+export const DELETE_BOOK = 'DELETE_BOOK';
+
+export const DELETE_BOOK_REAL = 'DELETE_BOOK_REAL';
+
+export const DELETE_BOOK_UNDO = 'DELETE_BOOK_UNDO';
+
+export const EDIT_BOOK = 'EDIT_BOOK';
+
+export const EDIT_BOOK_REAL = 'EDIT_BOOK_REAL';
+
+export const EDIT_BOOK_UNDO = 'EDIT_BOOK_UNDO';

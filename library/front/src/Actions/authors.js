@@ -1,38 +1,38 @@
 import * as constants from '../Constants/authors';
 
 
-export function getAuthors(authors) {
+export function getAuthors(author) {
     return {
         type: constants.GET_AUTHORS_FROM_SERVER,
-        payload: authors
+        payload: author
     }
 }
 
-export function storeAuthorAsTemp(authors) {
+export function createAuthorAsTemp(author) {
     return {
         type: constants.CREATE_AUTHOR,
-        payload: authors
+        payload: author
     }
 }
 
-export function storeAuthorReal(response) {
+export function createAuthorReal(response) {
     return {
         type: constants.CREATE_AUTHOR_REAL,
         payload: response
     }
 }
 
-export function storeAuthorUndo(authors) {
+export function createAuthorUndo(author) {
     return {
         type: constants.CREATE_AUTHOR_UNDO,
-        payload: authors
+        payload: author
     }
 }
 
-export function deleteAuthorAsTemp(authors) {
+export function deleteAuthorAsTemp(author) {
     return {
         type: constants.DELETE_AUTHOR,
-        payload: authors
+        payload: author
     }
 }
 
@@ -43,30 +43,30 @@ export function deleteAuthorAsReal(response) {
     }
 }
 
-export function deleteAuthorUndo(authors) {
+export function deleteAuthorUndo(author) {
     return {
         type: constants.DELETE_AUTHOR_UNDO,
-        payload: authors
+        payload: author
     }
 }
 
-export function updateAuthorAsTemp(authors, oldAuthor) {
+export function editAuthorAsTemp(author) {
     return {
-        type: constants.UPDATE_AUTHOR,
-        payload: {authors, oldAuthor}
-    }
+        type: constants.EDIT_AUTHOR,
+        payload: author
+}
 }
 
-export function updateAuthorAsReal(response) {
+export function editAuthorAsReal(response) {
     return {
-        type: constants.CREATE_AUTHOR_REAL,
+        type: constants.EDIT_AUTHOR_REAL,
         payload: response
     }
 }
 
-export function updateAuthorAsUndo(authors) {
+export function editAuthorAsUndo(author) {
     return {
-        type: constants.CREATE_AUTHOR_UNDO,
-        payload: authors
+        type: constants.EDIT_AUTHOR_UNDO,
+        payload: author
     }
 }

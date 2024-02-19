@@ -1,10 +1,10 @@
-import Nav from "../../Components/Nav";
+import { BooksProvider } from "../../Contexts/Books";
+import Layout from "./Layout";
 
 export default function Index() {
     return (
-        <div>
-            <Nav/>
-            <h1>Books</h1>
-        </div>
+        <BooksProvider>
+            <Layout/>
+        </BooksProvider>
     )
 }

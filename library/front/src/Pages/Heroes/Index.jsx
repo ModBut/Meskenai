@@ -1,10 +1,10 @@
-import Nav from "../../Components/Nav";
+import { HeroesProvider } from "../../Contexts/Heroes";
+import Layout from "./Layout";
 
 export default function Index() {
     return (
-        <div>
-            <Nav/>
-            <h1>Heroes</h1>
-        </div>
+        <HeroesProvider>
+            <Layout/>
+        </HeroesProvider>
     )
 }

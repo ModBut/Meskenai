@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import {SERVER_URL} from '../Constants/main';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
-import {deleteAuthorAsReal, deleteAuthorAsTemp, deleteAuthorUndo, getAuthors, storeAuthorAsTemp, storeAuthorReal, storeAuthorUndo, updateAuthorAsReal, updateAuthorAsTemp, updateAuthorAsUndo} from '../Actions/authors';
+import * as a from '../Actions/authors';
 
 export default function useAuthors(dispachAuthors) {
 
@@ -13,7 +13,7 @@ export default function useAuthors(dispachAuthors) {
     useEffect(() => {
         axios.get(`${SERVER_URL}/authors`)
             .then(res => {
-                dispachAuthors(getAuthors(res.data));
+                dispachAuthors(a.getAuthors(res.data));
             })
             .catch (err => {
                 console.log(err);
@@ -24,14 +24,14 @@ export default function useAuthors(dispachAuthors) {
     useEffect(() => {
         if (null !== storeAuthor) {
             const uuid = uuidv4();
-            dispachAuthors(storeAuthorAsTemp({...storeAuthor, id: uuid}))
+            dispachAuthors(a.createAuthorAsTemp({...storeAuthor, id: uuid}))
             axios.post(`${SERVER_URL}/authors`, {...storeAuthor, id: uuid})
                 .then(res => {
                     setStoreAuthor(null);
-                    dispachAuthors(storeAuthorReal(res.data));
+                    dispachAuthors(a.createAuthorReal(res.data));
                 })
                 .catch(() => {
-                    dispachAuthors(storeAuthorUndo({...storeAuthor, id: uuid}));
+                    dispachAuthors(a.createAuthorUndo({...storeAuthor, id: uuid}));
                     setStoreAuthor(null);
                 });
         }
@@ -40,29 +40,29 @@ export default function useAuthors(dispachAuthors) {
 
     useEffect(() => {
         if (null !== updateAuthor) {
-            dispachAuthors(updateAuthorAsTemp(updateAuthor))
+            dispachAuthors(a.editAuthorAsTemp(updateAuthor));
             axios.put(`${SERVER_URL}/authors/${updateAuthor.id}`, updateAuthor)
                 .then(res => {
                     setUpdateAuthor(null);
-                    dispachAuthors(updateAuthorAsReal(res.data))
+                    dispachAuthors(a.editAuthorAsReal(res.data));
                 })
                 .catch(() => {
-                    dispachAuthors(updateAuthorAsUndo(updateAuthor));
                     setUpdateAuthor(null);
+                    dispachAuthors(a.editAuthorAsUndo(updateAuthor));
                 })
         }
     }, [updateAuthor, dispachAuthors]);
 
     useEffect(_ => {
         if (null !== destroyAuthor) {
-            dispachAuthors(deleteAuthorAsTemp(destroyAuthor));
+            dispachAuthors(a.deleteAuthorAsTemp(destroyAuthor));
             axios.delete(`${SERVER_URL}/authors/${destroyAuthor.id}`)
                 .then(res => {
                     setDestroyAuthor(null);
-                    dispachAuthors(deleteAuthorAsReal(res.data));
+                    dispachAuthors(a.deleteAuthorAsReal(res.data));
                 })
                 .catch(() => {
-                    dispachAuthors(deleteAuthorUndo(destroyAuthor));
+                    dispachAuthors(a.deleteAuthorUndo(destroyAuthor));
                     setDestroyAuthor(null);
                 });
         }
